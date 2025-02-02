@@ -5,6 +5,175 @@
 	(uuid "65a3ee60-5d53-43a0-a9e7-55cfb05b77d7")
 	(paper "User" 3048 3048)
 	(lib_symbols
+		(symbol "Device:LED"
+			(pin_numbers hide)
+			(pin_names
+				(offset 1.016) hide)
+			(exclude_from_sim no)
+			(in_bom yes)
+			(on_board yes)
+			(property "Reference" "D"
+				(at 0 2.54 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+				)
+			)
+			(property "Value" "LED"
+				(at 0 -2.54 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+				)
+			)
+			(property "Footprint" ""
+				(at 0 0 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+					(hide yes)
+				)
+			)
+			(property "Datasheet" "~"
+				(at 0 0 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+					(hide yes)
+				)
+			)
+			(property "Description" "Light emitting diode"
+				(at 0 0 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+					(hide yes)
+				)
+			)
+			(property "ki_keywords" "LED diode"
+				(at 0 0 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+					(hide yes)
+				)
+			)
+			(property "ki_fp_filters" "LED* LED_SMD:* LED_THT:*"
+				(at 0 0 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+					(hide yes)
+				)
+			)
+			(symbol "LED_0_1"
+				(polyline
+					(pts
+						(xy -1.27 -1.27) (xy -1.27 1.27)
+					)
+					(stroke
+						(width 0.254)
+						(type default)
+					)
+					(fill
+						(type none)
+					)
+				)
+				(polyline
+					(pts
+						(xy -1.27 0) (xy 1.27 0)
+					)
+					(stroke
+						(width 0)
+						(type default)
+					)
+					(fill
+						(type none)
+					)
+				)
+				(polyline
+					(pts
+						(xy 1.27 -1.27) (xy 1.27 1.27) (xy -1.27 0) (xy 1.27 -1.27)
+					)
+					(stroke
+						(width 0.254)
+						(type default)
+					)
+					(fill
+						(type none)
+					)
+				)
+				(polyline
+					(pts
+						(xy -3.048 -0.762) (xy -4.572 -2.286) (xy -3.81 -2.286) (xy -4.572 -2.286) (xy -4.572 -1.524)
+					)
+					(stroke
+						(width 0)
+						(type default)
+					)
+					(fill
+						(type none)
+					)
+				)
+				(polyline
+					(pts
+						(xy -1.778 -0.762) (xy -3.302 -2.286) (xy -2.54 -2.286) (xy -3.302 -2.286) (xy -3.302 -1.524)
+					)
+					(stroke
+						(width 0)
+						(type default)
+					)
+					(fill
+						(type none)
+					)
+				)
+			)
+			(symbol "LED_1_1"
+				(pin passive line
+					(at -3.81 0 0)
+					(length 2.54)
+					(name "K"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+					(number "1"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+				)
+				(pin passive line
+					(at 3.81 0 180)
+					(length 2.54)
+					(name "A"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+					(number "2"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+				)
+			)
+		)
 		(symbol "Device:Q_NMOS_GSD"
 			(pin_names
 				(offset 0) hide)
@@ -948,6 +1117,12 @@
 		(uuid "98d267ac-106c-4d82-ad75-3dfb65a6be08")
 	)
 	(junction
+		(at 29.21 35.56)
+		(diameter 0)
+		(color 0 0 0 0)
+		(uuid "a009b2e8-38d5-4230-84fa-13e524a42b70")
+	)
+	(junction
 		(at 38.1 45.72)
 		(diameter 0)
 		(color 0 0 0 0)
@@ -1073,13 +1248,23 @@
 	)
 	(wire
 		(pts
-			(xy 46.99 45.72) (xy 53.34 45.72)
+			(xy 48.26 45.72) (xy 53.34 45.72)
 		)
 		(stroke
 			(width 0)
 			(type default)
 		)
 		(uuid "5ffed6d9-17df-49ea-b258-1e9ed8aa79c1")
+	)
+	(wire
+		(pts
+			(xy 21.59 45.72) (xy 21.59 44.45)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "6504da08-6494-42f8-815e-8c617429d520")
 	)
 	(wire
 		(pts
@@ -1093,6 +1278,16 @@
 	)
 	(wire
 		(pts
+			(xy 21.59 35.56) (xy 21.59 36.83)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "6be03cbb-53e9-4585-8fea-31adbcdd7b5b")
+	)
+	(wire
+		(pts
 			(xy 38.1 46.99) (xy 38.1 45.72)
 		)
 		(stroke
@@ -1103,7 +1298,7 @@
 	)
 	(wire
 		(pts
-			(xy 46.99 39.37) (xy 46.99 45.72)
+			(xy 48.26 39.37) (xy 48.26 45.72)
 		)
 		(stroke
 			(width 0)
@@ -1133,6 +1328,16 @@
 	)
 	(wire
 		(pts
+			(xy 21.59 45.72) (xy 29.21 45.72)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "b67dd511-3459-48ad-bfb5-7db098a3b159")
+	)
+	(wire
+		(pts
 			(xy 36.83 40.64) (xy 36.83 50.8)
 		)
 		(stroke
@@ -1153,7 +1358,7 @@
 	)
 	(wire
 		(pts
-			(xy 44.45 39.37) (xy 46.99 39.37)
+			(xy 44.45 39.37) (xy 48.26 39.37)
 		)
 		(stroke
 			(width 0)
@@ -1463,7 +1668,7 @@
 				(hide yes)
 			)
 		)
-		(property "Footprint" "Package_TO_SOT_SMD:SOT-723"
+		(property "Footprint" "cnhardware:SOT-723-COMPACTP"
 			(at 55.88 43.18 0)
 			(effects
 				(font
@@ -1554,7 +1759,7 @@
 		(dnp no)
 		(uuid "3839b08e-a751-42ed-956d-72e62de7cc15")
 		(property "Reference" "P1"
-			(at 34.544 44.704 0)
+			(at 34.798 44.45 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -1572,7 +1777,7 @@
 				(hide yes)
 			)
 		)
-		(property "Footprint" "Package_TO_SOT_SMD:SOT-723"
+		(property "Footprint" "cnhardware:SOT-723-COMPACTP"
 			(at 26.67 43.18 0)
 			(effects
 				(font
@@ -1682,7 +1887,7 @@
 				(hide yes)
 			)
 		)
-		(property "Footprint" "Package_TO_SOT_SMD:SOT-723"
+		(property "Footprint" "cnhardware:SOT-723-COMPACTP"
 			(at 77.47 43.18 0)
 			(effects
 				(font
@@ -1791,7 +1996,7 @@
 				(hide yes)
 			)
 		)
-		(property "Footprint" "Package_TO_SOT_SMD:SOT-723"
+		(property "Footprint" "cnhardware:SOT-723-COMPACT"
 			(at 77.47 48.26 0)
 			(effects
 				(font
@@ -1883,7 +2088,7 @@
 		(dnp no)
 		(uuid "8df09196-c4a6-49c5-8d86-0c66d21ae5ec")
 		(property "Reference" "N1"
-			(at 34.544 46.736 0)
+			(at 34.798 46.99 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -1901,7 +2106,7 @@
 				(hide yes)
 			)
 		)
-		(property "Footprint" "Package_TO_SOT_SMD:SOT-723"
+		(property "Footprint" "cnhardware:SOT-723-COMPACT"
 			(at 26.67 48.26 0)
 			(effects
 				(font
@@ -1983,6 +2188,179 @@
 		)
 	)
 	(symbol
+		(lib_id "Device:R")
+		(at 21.59 40.64 0)
+		(unit 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(dnp no)
+		(uuid "8f55359d-b840-45b8-b4fc-a2785efd90e2")
+		(property "Reference" "R3"
+			(at 23.876 40.64 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Value" "1k"
+			(at 21.59 40.386 90)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Footprint" "cnhardware:R_0402_1005Metric_COMPACT"
+			(at 19.812 40.64 90)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Datasheet" "~"
+			(at 21.59 40.64 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Description" "Resistor"
+			(at 21.59 40.64 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "LCSC" "C11702"
+			(at 21.59 40.64 90)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(pin "2"
+			(uuid "0ef7b910-c1cb-46af-8b48-f280e0b45f0f")
+		)
+		(pin "1"
+			(uuid "4eb053a3-84a6-4e99-b03a-47e1417bae54")
+		)
+		(instances
+			(project "schtest"
+				(path "/65a3ee60-5d53-43a0-a9e7-55cfb05b77d7"
+					(reference "R3")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
+		(lib_id "Device:LED")
+		(at 25.4 35.56 0)
+		(unit 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(dnp no)
+		(uuid "9a5705c8-babd-4a6d-add9-9c6d3a338f4a")
+		(property "Reference" "D1"
+			(at 26.924 37.846 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify right)
+			)
+		)
+		(property "Value" "LED"
+			(at 21.59 38.354 90)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify right)
+				(hide yes)
+			)
+		)
+		(property "Footprint" "cnhardware:LED_0402_1005Metric_COMPACT"
+			(at 25.4 35.56 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Datasheet" "~"
+			(at 25.4 35.56 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Description" "Light emitting diode"
+			(at 25.4 35.56 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "LCSC" "C965793"
+			(at 25.4 35.56 90)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Sim.Device" "D"
+			(at 25.4 35.56 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Sim.Pins" "1=A 2=K"
+			(at 25.4 35.56 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(pin "1"
+			(uuid "aecdb6e1-2d41-4827-ae85-4d4057bff835")
+		)
+		(pin "2"
+			(uuid "47a3b59a-f25a-40c1-9fad-01fc9175ce0c")
+		)
+		(instances
+			(project "schtest"
+				(path "/65a3ee60-5d53-43a0-a9e7-55cfb05b77d7"
+					(reference "D1")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
 		(lib_id "Device:Q_NMOS_GSD")
 		(at 50.8 50.8 0)
 		(unit 1)
@@ -1992,7 +2370,7 @@
 		(dnp no)
 		(uuid "9f6bbc7a-80f7-4eca-a2fa-9ae2ac4ed90a")
 		(property "Reference" "N2"
-			(at 47.752 47.244 0)
+			(at 47.498 47.498 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -2010,7 +2388,7 @@
 				(hide yes)
 			)
 		)
-		(property "Footprint" "Package_TO_SOT_SMD:SOT-723"
+		(property "Footprint" "cnhardware:SOT-723-COMPACT"
 			(at 55.88 48.26 0)
 			(effects
 				(font
@@ -2182,7 +2560,7 @@
 				)
 			)
 		)
-		(property "Footprint" "Resistor_SMD:R_0402_1005Metric"
+		(property "Footprint" "cnhardware:R_0402_1005Metric_COMPACT"
 			(at 40.64 37.592 90)
 			(effects
 				(font
@@ -2324,7 +2702,7 @@
 				)
 			)
 		)
-		(property "Footprint" "Resistor_SMD:R_0402_1005Metric"
+		(property "Footprint" "cnhardware:R_0402_1005Metric_COMPACT"
 			(at 41.91 48.768 90)
 			(effects
 				(font

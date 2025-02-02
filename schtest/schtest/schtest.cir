@@ -1,0 +1,12 @@
+.title KiCad schematic
+.model __N2 VDMOS NCHAN
+.model __P2 VDMOS PCHAN
+.model __P1 VDMOS PCHAN
+.model __N1 VDMOS NCHAN
+MN2 B0Q B0R GND __N2
+MP2 VDD B0R B0Q __P2
+MP1 VDD B0S B0NQ __P1
+MN1 B0NQ B0S GND __N1
+R1 B0NQ B0R 1k
+R2 B0Q B0S 1k
+.end

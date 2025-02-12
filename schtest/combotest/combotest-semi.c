@@ -8,7 +8,7 @@ int main()
 	//   Possibly (R1||(R2+C))
 
 	float tdelta = 1.0e-12;
-	float mintargetnodecap = 1.0e-12; // Target capacitance for node (tell simulator not to go below this, even if it would be numerically stable.)
+	float mintargetnodecap = 1.0e-12;
 
 	#define NODES 6
 	#define COMPS 5
@@ -18,7 +18,7 @@ int main()
 	// Instantaneous I deltas
 	float NodeIs[NODES] = { 0 };
 
-	const float ComponentRs[COMPS] = { 2, 1, 50, 1000, 1000 };
+	const float ComponentRs[COMPS] = { 2, 1, 1000, 1000, 1000 };
 	const float ComponentCs[COMPS] = { -1, 30.e-12, -1, 1.e-12, -1 };
 	float ComponentVDiff[COMPS] = { 0 };
 	int ComponentTerms[COMPS][2] = {
@@ -32,8 +32,8 @@ int main()
 	int c;
 	for( c = 0; c < COMPS; c++ )
 	{
-		NodeCaps[ComponentTerms[c][0]] += tdelta / 1.9 / ComponentRs[c];
-		NodeCaps[ComponentTerms[c][1]] += tdelta / 1.9 / ComponentRs[c];
+		NodeCaps[ComponentTerms[c][0]] += tdelta / .99 / ComponentRs[c];
+		NodeCaps[ComponentTerms[c][1]] += tdelta / .99 / ComponentRs[c];
 	}
 	int n;
 	for( n = 0; n < NODES; n++ )
@@ -46,7 +46,7 @@ int main()
 	int iteration;
 	for( iteration = 0; iteration < 10000; iteration++ )
 	{
-		NodeVoltages[0] = (sin(iteration/1000.0) * 2.50) > 0.0 ? 5.0 : 0.0;
+		NodeVoltages[0] = (sin(iteration/100.0) * 2.50) > 0.0 ? 5.0 : 0.0;
 		NodeVoltages[3] = 0.0;
 		NodeVoltages[5] = 5.0;
 		for( n = 0; n < NODES; n++ )

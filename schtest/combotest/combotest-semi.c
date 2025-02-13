@@ -47,9 +47,9 @@ int main()
 	float MOSFetVSD = 0.0;
 
 	int iteration;
-	for( iteration = 0; iteration < 1000; iteration++ )
+	for( iteration = 0; iteration < 2000; iteration++ )
 	{
-		NodeVoltages[0] = (sin(iteration/300.0) * 2.50) > 0.0 ? 5.0 : 0.0;
+		NodeVoltages[0] = (sin(iteration/200.0-1) * 2.50) > 0.0 ? 5.0 : 0.0;
 		NodeVoltages[2] = 0.0;
 		NodeVoltages[4] = 5.0;
 		for( n = 0; n < NODES; n++ )
@@ -105,7 +105,12 @@ int main()
 			{
 				const float plateauSize = vGSth;
 				float vGSTmp = (vGS - vGSth);
-				rFET = rFET / (vGSTmp+1);
+
+				float percentOn = vGSTmp / plateauSize;
+				if( percentOn > 1 ) percentOn = 1;
+				//printf( "%f %f %f\n", vGSTmp, plateauSize, percentOn );
+				rFET = rFET * (1-percentOn) + rDSOn;
+
 				if( vGSTmp < plateauSize )
 				{
 					vGSTmp = 0;
@@ -117,12 +122,16 @@ int main()
 				vGS = vGSth + vGSTmp;
 			}
 			
-			float iSD = (vD - vS + MOSFetVSD) / rFET;
+			float rVDSCapR = 1;
+			float iSDCap = (vD - vS - MOSFetVSD)/rVDSCapR;
+			float iSD = iSDCap + (vD-vS)/rFET;
 			float iG = (vG - vS - vGS) / rG;
-			printf( "[%f-%f] VGS: %f (%f) -> %f\n", vG, vS, vGS, iG, rFET );
+			printf( "%f,%f,%f,%f\n", vG, vS, gQ / cISS, vGS );
+			//printf( "%f,%f,%f,%f,%f,%f\n", vD, vS, MOSFetVSD, rFET, iSD, (vD-vS)/rFET );
+			//printf( "%f-%f VGS: %f (%f) ->rFET %f  VDS: %f\n", vG, vS, vGS, iG, rFET, vD - vS );
 			
 			MOSFetGateCharge += iG * tdelta;
-			MOSFetVSD += iSD / cOSS * tdelta;
+			MOSFetVSD += iSDCap / cOSS * tdelta;
 			
 			NodeIs[nS] += iG/2;
 			NodeIs[nG] -= iG/2;
@@ -136,8 +145,9 @@ int main()
 			float nv;
 			NodeVoltages[n] = nv = NodeVoltages[n] + NodeIs[n] / (NodeCaps[n]) * tdelta;
 			//if( (iteration % 100) == 0)
-			printf( "%f,%f,+%c", nv, NodeIs[n], (n == NODES-1) ? '\n':',' );
+			//printf( "%f,%f,+%c", nv, NodeIs[n], (n == NODES-1) ? '\n':',' );
 		}
+		//printf( "\n" );
 
 	}
 }

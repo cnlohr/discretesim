@@ -1031,7 +1031,7 @@
 				)
 			)
 		)
-		(property "Value" "2SK3541"
+		(property "Value" "NX7002BKMB315"
 			(at 0 1.6 0)
 			(layer "User.3")
 			(hide yes)
@@ -2116,7 +2116,7 @@
 			(size 0.54 0.64)
 			(layers "F.Cu" "F.Mask" "F.Paste")
 			(roundrect_rratio 0.25)
-			(net 114 "Net-(D16-A)")
+			(net 4 "GND")
 			(pintype "passive")
 			(uuid "1c86a539-1376-4195-8d55-aba751aa87ff")
 		)
@@ -3048,7 +3048,7 @@
 				)
 			)
 		)
-		(property "Value" "RZM001P02T2L"
+		(property "Value" "BSS84KNC"
 			(at 0 1.6 0)
 			(layer "User.3")
 			(hide yes)
@@ -4339,7 +4339,7 @@
 				)
 			)
 		)
-		(property "Value" "2SK3541"
+		(property "Value" "NX7002BKMB315"
 			(at 0 1.6 0)
 			(layer "User.3")
 			(hide yes)
@@ -6579,7 +6579,7 @@
 				)
 			)
 		)
-		(property "Value" "2SK3541"
+		(property "Value" "NX7002BKMB315"
 			(at 0 1.6 0)
 			(layer "User.3")
 			(hide yes)
@@ -8256,7 +8256,7 @@
 				)
 			)
 		)
-		(property "Value" "2SK3541"
+		(property "Value" "NX7002BKMB315"
 			(at 0 1.6 0)
 			(layer "User.3")
 			(hide yes)
@@ -9518,7 +9518,7 @@
 				)
 			)
 		)
-		(property "Value" "2SK3541"
+		(property "Value" "NX7002BKMB315"
 			(at 0 1.6 0)
 			(layer "User.3")
 			(hide yes)
@@ -10432,7 +10432,7 @@
 				)
 			)
 		)
-		(property "Value" "2SK3541"
+		(property "Value" "NX7002BKMB315"
 			(at 0 1.6 0)
 			(layer "User.3")
 			(hide yes)
@@ -21405,7 +21405,7 @@
 				)
 			)
 		)
-		(property "Value" "RZM001P02T2L"
+		(property "Value" "BSS84KNC"
 			(at 0 1.6 0)
 			(layer "User.3")
 			(hide yes)
@@ -23431,7 +23431,7 @@
 				)
 			)
 		)
-		(property "Value" "2SK3541"
+		(property "Value" "NX7002BKMB315"
 			(at 0 1.6 0)
 			(layer "User.3")
 			(hide yes)
@@ -25844,7 +25844,7 @@
 				)
 			)
 		)
-		(property "Value" "RZM001P02T2L"
+		(property "Value" "BSS84KNC"
 			(at 0 1.6 0)
 			(layer "User.3")
 			(hide yes)
@@ -34281,7 +34281,7 @@
 				)
 			)
 		)
-		(property "Value" "2SK3541"
+		(property "Value" "NX7002BKMB315"
 			(at 0 1.6 0)
 			(layer "User.3")
 			(hide yes)
@@ -38802,7 +38802,7 @@
 			(size 0.54 0.64)
 			(layers "F.Cu" "F.Mask" "F.Paste")
 			(roundrect_rratio 0.25)
-			(net 111 "Net-(D13-A)")
+			(net 4 "GND")
 			(pintype "passive")
 			(uuid "fa2ac452-c95c-48eb-8063-10474d7e579d")
 		)
@@ -39500,7 +39500,7 @@
 				)
 			)
 		)
-		(property "Value" "RZM001P02T2L"
+		(property "Value" "BSS84KNC"
 			(at 0 1.6 0)
 			(layer "User.3")
 			(hide yes)
@@ -42113,7 +42113,7 @@
 				)
 			)
 		)
-		(property "Value" "2SK3541"
+		(property "Value" "NX7002BKMB315"
 			(at 0 1.6 0)
 			(layer "User.3")
 			(hide yes)
@@ -44242,7 +44242,7 @@
 				)
 			)
 		)
-		(property "Value" "RZM001P02T2L"
+		(property "Value" "BSS84KNC"
 			(at 0 1.6 0)
 			(layer "User.3")
 			(hide yes)
@@ -45743,7 +45743,7 @@
 				)
 			)
 		)
-		(property "Value" "RZM001P02T2L"
+		(property "Value" "BSS84KNC"
 			(at 0 1.6 0)
 			(layer "User.3")
 			(hide yes)
@@ -47453,7 +47453,7 @@
 				)
 			)
 		)
-		(property "Value" "RZM001P02T2L"
+		(property "Value" "BSS84KNC"
 			(at 0 1.6 0)
 			(layer "User.3")
 			(hide yes)
@@ -49092,7 +49092,7 @@
 				)
 			)
 		)
-		(property "Value" "RZM001P02T2L"
+		(property "Value" "BSS84KNC"
 			(at 0 1.6 0)
 			(layer "User.3")
 			(hide yes)
@@ -49375,7 +49375,7 @@
 				)
 			)
 		)
-		(property "Value" "RZM001P02T2L"
+		(property "Value" "BSS84KNC"
 			(at 0 1.6 0)
 			(layer "User.3")
 			(hide yes)
@@ -51401,7 +51401,7 @@
 				)
 			)
 		)
-		(property "Value" "RZM001P02T2L"
+		(property "Value" "BSS84KNC"
 			(at 0 1.6 0)
 			(layer "User.3")
 			(hide yes)
@@ -57078,7 +57078,7 @@
 				)
 			)
 		)
-		(property "Value" "2SK3541"
+		(property "Value" "NX7002BKMB315"
 			(at 0 1.6 0)
 			(layer "User.3")
 			(hide yes)

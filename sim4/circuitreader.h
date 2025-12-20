@@ -3,24 +3,48 @@
 
 #include "cnrbtree.h"
 
+#define MAXNETSPERNODE 4
+#define MAXMODELPARS 4
+
+typedef struct
+{
+	char * id;
+	char * pars[MAXMODELPARS];
+} model;
+
+typedef struct
+{
+	char * id;
+	char * type;
+	int    numnets;
+	int    nets[MAXNETSPERNODE];
+} component;
+
 typedef char * str;
 CNRBTREETEMPLATE( str, int, RBstrcmp, RBstrcpy, RBstrdel );
 CNRBTREETEMPLATE( str, str, RBstrcmp, RBstrcpy, RBstrdel );
+CNRBTREETEMPLATE( str, component, RBstrcmp, RBstrcpy, RBstrdel );
+CNRBTREETEMPLATE( str, model, RBstrcmp, RBstrcpy, RBstrdel );
 
-
-typedef struct cir_sim_t
+typedef struct cir_reader_t
 {
 	int     nNets;
-//	void * arena;
-//	int    arenalen;
-//	float * vVoltages;
-//	float * vCurrents;
 
-	cnrbtree_strint * netmap;
-	cnrbtree_strstr * modelmap;
-} cir_sim;
+	component * components;
+	int numComponents;
 
-int CircuitLoad( cir_sim * s, char * cir );
+	char ** netNames;
+	int numNets;
+
+	cnrbtree_strint   * netmap;
+
+	cnrbtree_strmodel * modelmap;
+	cnrbtree_strcomponent * componentmap;
+
+	cnrbtree_strint * tpmap;
+} cir_reader;
+
+int CircuitLoad( cir_reader * s, char * cir );
 
 #endif
 

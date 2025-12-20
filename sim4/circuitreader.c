@@ -5,90 +5,111 @@
 
 #include "circuitreader.h"
 
-static char * pull_sym( char ** s, char * term )
+
+char * pullstr( char ** line )
 {
-	char * sp = *s, * sr = sp;
-	char c;
-	do
-	{
-		c = *(sr++);
-		if( !c )
-		{
-			*term = c;
-			*s = sr;
-			return sp;
-		}
-	}
-	while( c == ' ' || c == '\t' || c == '\r' || c == '\n' );
-
-	sp = sr-1;
-
-	do
-	{
-		c = *(sr++);
-	}
-	while( !( c == ' ' || c == '\t' || c == '\r' || c == '\n' || c == '\0' ) );
-	*term   = c;
-	*(sr-1) = 0;
-	*s = sr;
-	return sp;
-}
-
-static char * dump_line( char ** sp )
-{
-	char * s = *sp;
-	char * st = s;
+	char * ret = *line;
 	int c;
 	do
 	{
-		c = *s;
-		if( c == 0 )
-		{
-			*sp = s;
-			return s;
-		}
-		s++;
-	} while( c != '\n' && c != '\r' );
-	*(s-1) = 0;
-	*sp = s;
-	return st;
+		c = *((*line));
+		if( c == '\0' ) break;
+		if( c == ' ' || c == '\t' ) break;
+		(*line)++;
+	} while( 1 );
+	**line = 0;
+	if( c ) (*line)++;
+	return ret;
 }
 
-int CircuitLoad( cir_sim * s, char * cir )
+int CircuitLoad( cir_reader * s, char * cir )
 {
-	/*
-		.title KiCad schematic
-		.model __N1 VDMOS NCHAN
-		MN1 B0NQ B0S GND __N1
-		R2 B0Q B0S 1k
-		R3 VDD Net-_D1-A_ 1k
-		.end
-	*/
-	int topnetid = 0;
+	memset( s, 0, sizeof( *s ) );
 
 	s->netmap = cnrbtree_strint_create();
-	s->modelmap = cnrbtree_strstr_create();
+	s->modelmap = cnrbtree_strmodel_create();
+	s->componentmap = cnrbtree_strcomponent_create();
 
-	char term;
-	char * sp;
+	int lineno = 0;
+	int iseof = 0;
 	do
 	{
-		sp = pull_sym( &cir, &term );
-		printf( "*%s\n", sp );
-		if( term == 0 ) break;
-		if( strcmp( sp, ".title" ) == 0 ) dump_line( &cir );
-		else if( strcmp( sp, ".model" ) == 0 )
+		char * line = cir;
+		int i;
+		do
 		{
-			char * nameid = pull_sym( &cir, &term );
-			RBA( s->modelmap, nameid ) = dump_line( &cir );
-		}
-		else
-		{
-			printf( "-%s-(%d)-", sp, term );
-		}
-	} while( term );
+			char c = *(cir);
+			if( c == '\n' ) { *cir = 0; cir++; break; }
+			if( c == '\0' ) { iseof = 1; *cir = 0; cir++; break; }
+			cir++;
+		} while( 1 );
 
-	s->nNets = s->netmap->size;
+		lineno++;
+
+		if( line[0] == '.' )
+		{
+			char * command = pullstr( &line );
+			if( strcmp( command, ".model" ) == 0 )
+			{
+				model m;
+				char * id = pullstr( &line );
+				m.id = id;
+				int nhas = 0;
+				while( *line )
+				{
+					if( nhas >= MAXMODELPARS )
+					{
+						fprintf( stderr, "Error: too many parameters on line %d or fix MAXMODELPARS\n", lineno );
+						exit( -5 );
+					}
+					m.pars[nhas++] = pullstr( &line );
+				}
+
+				RBA( s->modelmap, id ) = m;
+			}
+		}
+		else if( strlen( line ) > 1 )
+		{
+			char * identifier = pullstr( &line );
+			char * pars[MAXNETSPERNODE+1];
+			char * last;
+			int numparsmets = 0;
+
+			while( *line )
+			{
+				if( numparsmets >= MAXNETSPERNODE+1 )
+				{
+					fprintf( stderr, "Error: too many parameters on line %d. Or fix MAXNETSPERNODE\n", lineno );
+					exit( -5 );
+				}
+				last = pars[numparsmets++] = pullstr( &line );
+			}
+
+			component m;
+			m.id = identifier;
+			m.type = last;
+			m.numnets = numparsmets-1;
+			int i;
+			for( i = 0; i < numparsmets-1; i++ )
+			{
+				char * par = pars[i];
+				if( RBHAS( s->netmap, par ) )
+					m.nets[i] = RBA( s->netmap, par );
+				else
+				{
+					int nid = s->numNets++;
+					s->netNames = realloc( s->netNames, sizeof( char*) * s->numNets );
+					s->netNames[nid] = par;
+					RBA( s->netmap, par ) = nid;
+				}
+			}
+
+			RBA( s->componentmap, identifier ) = m;
+			int nc = s->numComponents++;
+			s->components = realloc( s->components, s->numComponents * sizeof( component ) );
+			s->components[nc] = m;
+		}
+	} while( !iseof );
 
 	return 0;
 }

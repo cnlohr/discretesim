@@ -1580,7 +1580,7 @@
 		(on_board yes)
 		(dnp no)
 		(uuid "11c675b7-cb7d-49cf-92e4-0fb68bd8e1b8")
-		(property "Reference" "N6"
+		(property "Reference" "N3"
 			(at 59.182 34.544 0)
 			(effects
 				(font
@@ -1674,7 +1674,7 @@
 		(instances
 			(project "kicad"
 				(path "/d386f80f-1709-42ec-8243-5d17ab4d0026"
-					(reference "N6")
+					(reference "N3")
 					(unit 1)
 				)
 			)
@@ -1689,7 +1689,7 @@
 		(on_board yes)
 		(dnp no)
 		(uuid "13266c09-b45f-4ffa-aaab-9a50b8cc72de")
-		(property "Reference" "#PWR011"
+		(property "Reference" "#PWR09"
 			(at 74.93 26.67 0)
 			(effects
 				(font
@@ -1740,7 +1740,7 @@
 		(instances
 			(project "kicad"
 				(path "/d386f80f-1709-42ec-8243-5d17ab4d0026"
-					(reference "#PWR011")
+					(reference "#PWR09")
 					(unit 1)
 				)
 			)
@@ -1755,7 +1755,7 @@
 		(on_board yes)
 		(dnp no)
 		(uuid "1924a30f-f843-4e8b-b2f1-21bab6dc39cf")
-		(property "Reference" "N4"
+		(property "Reference" "N1"
 			(at 38.862 34.544 0)
 			(effects
 				(font
@@ -1849,7 +1849,7 @@
 		(instances
 			(project "kicad"
 				(path "/d386f80f-1709-42ec-8243-5d17ab4d0026"
-					(reference "N4")
+					(reference "N1")
 					(unit 1)
 				)
 			)
@@ -1864,7 +1864,7 @@
 		(on_board yes)
 		(dnp no)
 		(uuid "371a27f9-6756-4b2a-a7c4-0d39827bd95e")
-		(property "Reference" "N7"
+		(property "Reference" "N4"
 			(at 69.342 34.544 0)
 			(effects
 				(font
@@ -1958,7 +1958,7 @@
 		(instances
 			(project "kicad"
 				(path "/d386f80f-1709-42ec-8243-5d17ab4d0026"
-					(reference "N7")
+					(reference "N4")
 					(unit 1)
 				)
 			)
@@ -1974,7 +1974,7 @@
 		(dnp no)
 		(fields_autoplaced yes)
 		(uuid "511c0cc6-051c-4fec-9ebc-ec8149f94bed")
-		(property "Reference" "TP4"
+		(property "Reference" "TP3"
 			(at 82.55 45.7199 90)
 			(effects
 				(font
@@ -2029,7 +2029,7 @@
 				(hide yes)
 			)
 		)
-		(property "Sim.Device" "SPICE"
+		(property "Sim.Device" "TP"
 			(at 77.47 46.99 0)
 			(effects
 				(font
@@ -2038,7 +2038,7 @@
 				(hide yes)
 			)
 		)
-		(property "Sim.Params" "type=TP_"
+		(property "Sim.Params" "TP"
 			(at 77.47 46.99 0)
 			(effects
 				(font
@@ -2053,7 +2053,7 @@
 		(instances
 			(project "kicad"
 				(path "/d386f80f-1709-42ec-8243-5d17ab4d0026"
-					(reference "TP4")
+					(reference "TP3")
 					(unit 1)
 				)
 			)
@@ -2069,7 +2069,7 @@
 		(on_board yes)
 		(dnp no)
 		(uuid "55175eec-486c-4eba-b9a0-c92a0b7bec78")
-		(property "Reference" "P6"
+		(property "Reference" "P3"
 			(at 58.166 24.638 0)
 			(effects
 				(font
@@ -2163,7 +2163,7 @@
 		(instances
 			(project "kicad"
 				(path "/d386f80f-1709-42ec-8243-5d17ab4d0026"
-					(reference "P6")
+					(reference "P3")
 					(unit 1)
 				)
 			)
@@ -2178,7 +2178,7 @@
 		(on_board yes)
 		(dnp no)
 		(uuid "59cc5833-d33a-4b4d-b5d9-84929b18d5df")
-		(property "Reference" "#PWR015"
+		(property "Reference" "#PWR013"
 			(at 92.71 33.02 0)
 			(effects
 				(font
@@ -2229,7 +2229,7 @@
 		(instances
 			(project "kicad"
 				(path "/d386f80f-1709-42ec-8243-5d17ab4d0026"
-					(reference "#PWR015")
+					(reference "#PWR013")
 					(unit 1)
 				)
 			)
@@ -2244,7 +2244,7 @@
 		(on_board yes)
 		(dnp no)
 		(uuid "59e71c98-d51f-4e20-b2e6-281c38c1c5b9")
-		(property "Reference" "#PWR018"
+		(property "Reference" "#PWR01"
 			(at 29.21 33.02 0)
 			(effects
 				(font
@@ -2294,7 +2294,7 @@
 		(instances
 			(project "kicad"
 				(path "/d386f80f-1709-42ec-8243-5d17ab4d0026"
-					(reference "#PWR018")
+					(reference "#PWR01")
 					(unit 1)
 				)
 			)
@@ -2309,7 +2309,7 @@
 		(on_board yes)
 		(dnp no)
 		(uuid "6d0a396a-b3da-49e9-8aef-29d7ef52d459")
-		(property "Reference" "#PWR09"
+		(property "Reference" "#PWR07"
 			(at 64.77 26.67 0)
 			(effects
 				(font
@@ -2360,7 +2360,7 @@
 		(instances
 			(project "kicad"
 				(path "/d386f80f-1709-42ec-8243-5d17ab4d0026"
-					(reference "#PWR09")
+					(reference "#PWR07")
 					(unit 1)
 				)
 			)
@@ -2375,7 +2375,7 @@
 		(on_board yes)
 		(dnp no)
 		(uuid "6f0ebce6-483b-45ac-8fa4-a7f5a550d9b4")
-		(property "Reference" "D2"
+		(property "Reference" "LED1"
 			(at 94.996 31.496 0)
 			(effects
 				(font
@@ -2430,7 +2430,7 @@
 				(hide yes)
 			)
 		)
-		(property "Sim.Device" "D"
+		(property "Sim.Device" "LED"
 			(at 92.71 33.02 0)
 			(effects
 				(font
@@ -2457,7 +2457,7 @@
 		(instances
 			(project "kicad"
 				(path "/d386f80f-1709-42ec-8243-5d17ab4d0026"
-					(reference "D2")
+					(reference "LED1")
 					(unit 1)
 				)
 			)
@@ -2473,7 +2473,7 @@
 		(on_board yes)
 		(dnp no)
 		(uuid "86e9ac4b-b347-4c1c-bf25-2e5c59d062f5")
-		(property "Reference" "P4"
+		(property "Reference" "P1"
 			(at 37.846 24.638 0)
 			(effects
 				(font
@@ -2567,7 +2567,7 @@
 		(instances
 			(project "kicad"
 				(path "/d386f80f-1709-42ec-8243-5d17ab4d0026"
-					(reference "P4")
+					(reference "P1")
 					(unit 1)
 				)
 			)
@@ -2583,7 +2583,7 @@
 		(dnp no)
 		(fields_autoplaced yes)
 		(uuid "9081bd5c-a214-4f76-bdf6-9b63cb388dfc")
-		(property "Reference" "TP1"
+		(property "Reference" "TP2"
 			(at 27.9399 34.29 90)
 			(effects
 				(font
@@ -2638,7 +2638,7 @@
 				(hide yes)
 			)
 		)
-		(property "Sim.Device" "SPICE"
+		(property "Sim.Device" "TP"
 			(at 29.21 39.37 0)
 			(effects
 				(font
@@ -2647,7 +2647,7 @@
 				(hide yes)
 			)
 		)
-		(property "Sim.Params" "type=TP_"
+		(property "Sim.Params" "TP"
 			(at 29.21 39.37 0)
 			(effects
 				(font
@@ -2662,7 +2662,7 @@
 		(instances
 			(project "kicad"
 				(path "/d386f80f-1709-42ec-8243-5d17ab4d0026"
-					(reference "TP1")
+					(reference "TP2")
 					(unit 1)
 				)
 			)
@@ -2677,7 +2677,7 @@
 		(on_board yes)
 		(dnp no)
 		(uuid "9bd6c793-81eb-4747-9f7c-2acc1ec10c9a")
-		(property "Reference" "#PWR010"
+		(property "Reference" "#PWR08"
 			(at 64.77 49.53 0)
 			(effects
 				(font
@@ -2727,7 +2727,7 @@
 		(instances
 			(project "kicad"
 				(path "/d386f80f-1709-42ec-8243-5d17ab4d0026"
-					(reference "#PWR010")
+					(reference "#PWR08")
 					(unit 1)
 				)
 			)
@@ -2742,7 +2742,7 @@
 		(on_board yes)
 		(dnp no)
 		(uuid "a2736dcb-9a61-4ebe-a18d-fdd1bb6e298f")
-		(property "Reference" "#PWR07"
+		(property "Reference" "#PWR05"
 			(at 54.61 26.67 0)
 			(effects
 				(font
@@ -2793,7 +2793,7 @@
 		(instances
 			(project "kicad"
 				(path "/d386f80f-1709-42ec-8243-5d17ab4d0026"
-					(reference "#PWR07")
+					(reference "#PWR05")
 					(unit 1)
 				)
 			)
@@ -2808,7 +2808,7 @@
 		(on_board yes)
 		(dnp no)
 		(uuid "af8cc797-965b-4842-9b41-a99c1cf8bcd3")
-		(property "Reference" "#PWR012"
+		(property "Reference" "#PWR010"
 			(at 74.93 49.53 0)
 			(effects
 				(font
@@ -2858,7 +2858,7 @@
 		(instances
 			(project "kicad"
 				(path "/d386f80f-1709-42ec-8243-5d17ab4d0026"
-					(reference "#PWR012")
+					(reference "#PWR010")
 					(unit 1)
 				)
 			)
@@ -2873,7 +2873,7 @@
 		(on_board yes)
 		(dnp no)
 		(uuid "b1887ec9-f43e-46e4-a4e3-5acc5dd22a00")
-		(property "Reference" "#PWR05"
+		(property "Reference" "#PWR03"
 			(at 44.45 26.67 0)
 			(effects
 				(font
@@ -2924,7 +2924,7 @@
 		(instances
 			(project "kicad"
 				(path "/d386f80f-1709-42ec-8243-5d17ab4d0026"
-					(reference "#PWR05")
+					(reference "#PWR03")
 					(unit 1)
 				)
 			)
@@ -2940,7 +2940,7 @@
 		(on_board yes)
 		(dnp no)
 		(uuid "b2922614-d2da-4c92-b470-ca500cedc603")
-		(property "Reference" "P8"
+		(property "Reference" "P5"
 			(at 78.486 24.638 0)
 			(effects
 				(font
@@ -3034,7 +3034,7 @@
 		(instances
 			(project "kicad"
 				(path "/d386f80f-1709-42ec-8243-5d17ab4d0026"
-					(reference "P8")
+					(reference "P5")
 					(unit 1)
 				)
 			)
@@ -3049,7 +3049,7 @@
 		(on_board yes)
 		(dnp no)
 		(uuid "b446e0d3-f540-41e1-9d0e-8f7a76ac72d9")
-		(property "Reference" "#PWR08"
+		(property "Reference" "#PWR06"
 			(at 54.61 49.53 0)
 			(effects
 				(font
@@ -3099,7 +3099,7 @@
 		(instances
 			(project "kicad"
 				(path "/d386f80f-1709-42ec-8243-5d17ab4d0026"
-					(reference "#PWR08")
+					(reference "#PWR06")
 					(unit 1)
 				)
 			)
@@ -3114,7 +3114,7 @@
 		(on_board yes)
 		(dnp no)
 		(uuid "bd4c4259-d6d6-4f51-8b08-9888326da7a6")
-		(property "Reference" "N8"
+		(property "Reference" "N5"
 			(at 79.502 34.544 0)
 			(effects
 				(font
@@ -3208,7 +3208,7 @@
 		(instances
 			(project "kicad"
 				(path "/d386f80f-1709-42ec-8243-5d17ab4d0026"
-					(reference "N8")
+					(reference "N5")
 					(unit 1)
 				)
 			)
@@ -3224,7 +3224,7 @@
 		(dnp no)
 		(fields_autoplaced yes)
 		(uuid "c039779e-cec0-485b-b2ae-dc70a57fcc0c")
-		(property "Reference" "TP2"
+		(property "Reference" "TP1"
 			(at 27.9399 21.59 90)
 			(effects
 				(font
@@ -3279,7 +3279,7 @@
 				(hide yes)
 			)
 		)
-		(property "Sim.Device" "SPICE"
+		(property "Sim.Device" "TP"
 			(at 29.21 26.67 0)
 			(effects
 				(font
@@ -3288,7 +3288,7 @@
 				(hide yes)
 			)
 		)
-		(property "Sim.Params" "type=TP_"
+		(property "Sim.Params" "TP"
 			(at 29.21 26.67 0)
 			(effects
 				(font
@@ -3303,7 +3303,7 @@
 		(instances
 			(project "kicad"
 				(path "/d386f80f-1709-42ec-8243-5d17ab4d0026"
-					(reference "TP2")
+					(reference "TP1")
 					(unit 1)
 				)
 			)
@@ -3318,7 +3318,7 @@
 		(on_board yes)
 		(dnp no)
 		(uuid "c5c220a6-3d90-40b2-96e7-3e1fbf5d8366")
-		(property "Reference" "#PWR013"
+		(property "Reference" "#PWR011"
 			(at 85.09 26.67 0)
 			(effects
 				(font
@@ -3369,7 +3369,7 @@
 		(instances
 			(project "kicad"
 				(path "/d386f80f-1709-42ec-8243-5d17ab4d0026"
-					(reference "#PWR013")
+					(reference "#PWR011")
 					(unit 1)
 				)
 			)
@@ -3384,7 +3384,7 @@
 		(on_board yes)
 		(dnp no)
 		(uuid "d04067e1-468a-4e77-b4de-7eab5cfdf9fa")
-		(property "Reference" "#PWR014"
+		(property "Reference" "#PWR012"
 			(at 85.09 49.53 0)
 			(effects
 				(font
@@ -3434,7 +3434,7 @@
 		(instances
 			(project "kicad"
 				(path "/d386f80f-1709-42ec-8243-5d17ab4d0026"
-					(reference "#PWR014")
+					(reference "#PWR012")
 					(unit 1)
 				)
 			)
@@ -3450,7 +3450,7 @@
 		(on_board yes)
 		(dnp no)
 		(uuid "d0f3bb25-ed65-46db-96a6-11db0bfb8769")
-		(property "Reference" "P5"
+		(property "Reference" "P2"
 			(at 48.006 24.638 0)
 			(effects
 				(font
@@ -3544,7 +3544,7 @@
 		(instances
 			(project "kicad"
 				(path "/d386f80f-1709-42ec-8243-5d17ab4d0026"
-					(reference "P5")
+					(reference "P2")
 					(unit 1)
 				)
 			)
@@ -3559,7 +3559,7 @@
 		(on_board yes)
 		(dnp no)
 		(uuid "d98c4f1c-77db-45da-9ec3-a93e62fe813e")
-		(property "Reference" "#PWR019"
+		(property "Reference" "#PWR02"
 			(at 29.21 35.56 0)
 			(effects
 				(font
@@ -3610,7 +3610,7 @@
 		(instances
 			(project "kicad"
 				(path "/d386f80f-1709-42ec-8243-5d17ab4d0026"
-					(reference "#PWR019")
+					(reference "#PWR02")
 					(unit 1)
 				)
 			)
@@ -3625,7 +3625,7 @@
 		(on_board yes)
 		(dnp no)
 		(uuid "e059220f-ae7d-46e0-8ea6-b45635ee398c")
-		(property "Reference" "#PWR06"
+		(property "Reference" "#PWR04"
 			(at 44.45 49.53 0)
 			(effects
 				(font
@@ -3675,7 +3675,7 @@
 		(instances
 			(project "kicad"
 				(path "/d386f80f-1709-42ec-8243-5d17ab4d0026"
-					(reference "#PWR06")
+					(reference "#PWR04")
 					(unit 1)
 				)
 			)
@@ -3691,7 +3691,7 @@
 		(on_board yes)
 		(dnp no)
 		(uuid "e19b941e-d686-41e9-a69c-b8fbe34ee2f2")
-		(property "Reference" "P7"
+		(property "Reference" "P4"
 			(at 68.326 24.638 0)
 			(effects
 				(font
@@ -3785,7 +3785,7 @@
 		(instances
 			(project "kicad"
 				(path "/d386f80f-1709-42ec-8243-5d17ab4d0026"
-					(reference "P7")
+					(reference "P4")
 					(unit 1)
 				)
 			)
@@ -3800,7 +3800,7 @@
 		(on_board yes)
 		(dnp no)
 		(uuid "f35ae8fe-ca86-48e1-acc8-fd5438b863f9")
-		(property "Reference" "R4"
+		(property "Reference" "R1"
 			(at 94.996 40.64 0)
 			(effects
 				(font
@@ -3861,7 +3861,7 @@
 		(instances
 			(project "kicad"
 				(path "/d386f80f-1709-42ec-8243-5d17ab4d0026"
-					(reference "R4")
+					(reference "R1")
 					(unit 1)
 				)
 			)
@@ -3876,7 +3876,7 @@
 		(on_board yes)
 		(dnp no)
 		(uuid "fb004655-1fba-44cd-b905-ce18a4daf7ba")
-		(property "Reference" "N5"
+		(property "Reference" "N2"
 			(at 49.022 34.544 0)
 			(effects
 				(font
@@ -3970,7 +3970,7 @@
 		(instances
 			(project "kicad"
 				(path "/d386f80f-1709-42ec-8243-5d17ab4d0026"
-					(reference "N5")
+					(reference "N2")
 					(unit 1)
 				)
 			)

@@ -1483,6 +1483,28 @@
 		)
 		(uuid "f420dab7-25d4-4629-826f-35d79469e223")
 	)
+	(global_label "LEDMR"
+		(shape input)
+		(at 92.71 36.83 0)
+		(fields_autoplaced yes)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+			(justify left)
+		)
+		(uuid "3c8cc8f4-56b1-4a2c-bf11-4e41a55df64c")
+		(property "Intersheetrefs" "${INTERSHEET_REFS}"
+			(at 101.8637 36.83 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+				(hide yes)
+			)
+		)
+	)
 	(global_label "MONITOR"
 		(shape input)
 		(at 90.17 49.53 0)
@@ -1540,6 +1562,28 @@
 		(uuid "84ccdcf3-b5c2-46e6-9bdf-0742acc3940d")
 		(property "Intersheetrefs" "${INTERSHEET_REFS}"
 			(at 84.5675 33.02 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+				(hide yes)
+			)
+		)
+	)
+	(global_label "MM4"
+		(shape input)
+		(at 46.99 33.02 0)
+		(fields_autoplaced yes)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+			(justify left)
+		)
+		(uuid "c4f9baf2-d35e-462b-bf94-7c5238f0f699")
+		(property "Intersheetrefs" "${INTERSHEET_REFS}"
+			(at 54.0875 33.02 0)
 			(effects
 				(font
 					(size 1.27 1.27)

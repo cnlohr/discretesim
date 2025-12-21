@@ -5,7 +5,7 @@
 
 #include "circuitreader.h"
 
-float tdelta = 1.0e-12;
+float tdelta = 4.0e-12;
 
 struct supercomp_t
 {
@@ -19,6 +19,12 @@ typedef struct
 	float * nodeCaps;
 	float * nodeVoltages;
 	float * nodeCurrents;
+
+
+	// Testing for a setup like:
+	//   (R+C) for all capacitors.
+	//   Possibly (R1||(R2+C))
+	//   For R only, use C=-1
 
 	// Meta components
 	int     numComps;
@@ -63,17 +69,19 @@ struct semicomp_nfet_t
 	float * vS;
 	float * vD;
 
+	int termRindex;
 	float * termR;
-
 	float gateCur;
 
 	int mcompGS, mcompSD, mcompSDR, mcompDG;
+
+	ckt_sim * sim;
 };
 
 void NFetCB( struct semicomp_nfet_t * s )
 {
 	float vGS = *s->vG - *s->vS;
-	float dGSQ = (vGS - 1.9);
+	float dGSQ = (vGS - 1.1);
 	float gc = s->gateCur * .999 + dGSQ * .001;
 	if( gc < -1 ) gc = -1;
 	if( gc > 5  ) gc = 5;
@@ -89,14 +97,18 @@ void NFetCB( struct semicomp_nfet_t * s )
 	float rDiode = 10.e6;
 	if( vfDiode > 0.00001 )
 		rDiode = 20/vfDiode;
-	
-	*(s->termR) = 1.0/(1.0/fetR + 1.0/rDiode);
+
+	//printf( "NFetR: %f %f %f -> %d %d  %d %d\n", fetR, rDiode, vGS, s->sim->compTerms[s->mcompGS*2+0], s->sim->compTerms[s->mcompGS*2+1], s->sim->compTerms[s->mcompSDR*2+0], s->sim->compTerms[s->mcompSDR*2+1] );
+
+	float * r = s->termR;
+	if( !r ) r = s->termR = &s->sim->compRes[s->termRindex];
+	*r = 1.0/(1.0/fetR + 1.0/rDiode);
 }
 
 void PFetCB( struct semicomp_nfet_t * s )
 {
 	float vSG = *s->vS - *s->vG;
-	float dGSQ = (vSG - 1.9);
+	float dGSQ = (vSG - 1.2);
 	float gc = s->gateCur * .9 + dGSQ * .1;
 	if( gc < -1 ) gc = -1;
 	if( gc > 5  ) gc = 5;
@@ -113,7 +125,10 @@ void PFetCB( struct semicomp_nfet_t * s )
 	if( vfDiode > 0.00001 )
 		rDiode = 20/vfDiode;
 	
-	*(s->termR) = 1.0/(1.0/fetR + 1.0/rDiode);
+	//printf( "PFetR: %f %f %f -> %d %d  %d %d\n", fetR, rDiode, vSG, s->sim->compTerms[s->mcompGS*2+0], s->sim->compTerms[s->mcompGS*2+1], s->sim->compTerms[s->mcompSDR*2+0], s->sim->compTerms[s->mcompSDR*2+1] );
+	float * r = s->termR;
+	if( !r ) r = s->termR = &s->sim->compRes[s->termRindex];
+	*r = 1.0/(1.0/fetR + 1.0/rDiode);
 }
 
 int AddFET( ckt_sim * sim, component * c, const char * type )
@@ -165,10 +180,12 @@ int AddFET( ckt_sim * sim, component * c, const char * type )
 	sim->compCaps[mcompSD] = 10.e-12; // coss
 	sim->compRes[mcompSD] = 1; //RG
 
-	sim->compCaps[mcompSDR] = -1;
+	sim->compCaps[mcompSDR] = -1; // Between drain and source
 	sim->compRes[mcompSDR] = 1e6;
 
-	sc->termR = &sim->compRes[mcompSDR];
+	sc->termRindex = mcompSDR;
+
+	sc->sim = sim;
 
 	// Or PFet.
 	if( strcmp( type, "NCHAN" ) == 0 )
@@ -196,9 +213,12 @@ struct semicomp_led_t
 	float * vAnnode;
 	float * vCathode;
 
-	float * compR;
+	int compRindex;
+	float * termR;
 
 	int mcomp;
+
+	ckt_sim * sim;
 };
 
 
@@ -209,10 +229,13 @@ void LEDCB( struct semicomp_led_t * s )
 
 	dF -= vF;
 
+	float * r = s->termR;
+	if( !r ) r = s->termR = &s->sim->compRes[s->compRindex];
+
 	if( dF < 0.00001 )
-		*s->compR = 10.e6;
+		*r = 10.e6;
 	else
-		*s->compR = 20/dF;
+		*r = 10/dF;
 }
 
 int AddLED( ckt_sim * sim, component * c, const char * type )
@@ -221,19 +244,20 @@ int AddLED( ckt_sim * sim, component * c, const char * type )
 
 	sc->cb = LEDCB;
 
-	int nA = c->nets[0];
-	int nC = c->nets[1];
+	int nA = c->nets[1];
+	int nC = c->nets[0];
 
 	int mcomp = sc->mcomp = AddMetaComp( sim );
 
 	int * compterms = &sim->compTerms[mcomp*2];
-printf( "LED ADD: %d -> %d %d\n", mcomp, nA, nC );
+
 	compterms[0] = nA;
 	compterms[1] = nC;
 
 	sc->vAnnode = &sim->nodeVoltages[nA];
 	sc->vCathode = &sim->nodeVoltages[nC];
-	sc->compR = &sim->compRes[mcomp];
+	sc->compRindex = mcomp;
+	sc->sim = sim;
 	return 0;
 }
 
@@ -255,8 +279,6 @@ int AddMetaComp( ckt_sim * s )
 	s->compTerms[cid*2+0] = -1;
 	s->compTerms[cid*2+1] = -1;
 
-	printf( "add %d %d %p\n", cid, s->compTerms[0], s->compTerms );
-
 	return cid;
 }
 
@@ -267,12 +289,28 @@ int ProcessEngineeringNumber( const char * e, float * num )
 	int c;
 	int isNeg = 0;
 	double ret = 0.0;
+	double decimal_derate = 0.1;
+	int after_decimal = 0;
 	do
 	{
-		c = e[n++];
+		c = e[n];
 		int isnum = (c >= '0' && c <= '9' );
+		printf( "/%c(%d)/\n", c, c );
 		if( !c ) break;
-		if( !started && !isnum )
+		n++;
+
+		if( c == '.' )
+		{
+			if( after_decimal )
+			{
+				fprintf( stderr, "Error: can't use two decimals in number %s\n", e );
+				return -5;
+			}
+			after_decimal = 1;
+			started = 1;
+			continue;
+		}
+		else if( !started && !isnum )
 		{
 			if( (c == ' ' || c == '\t' ) ) continue;
 			if( c == '-' ) { isNeg = 1; started = 1; continue; }
@@ -285,7 +323,15 @@ int ProcessEngineeringNumber( const char * e, float * num )
 
 		if( isnum )
 		{
-			ret = ret * 10 + (c - '0');
+			if( after_decimal )
+			{
+				ret = ret + (c - '0') * decimal_derate;
+				decimal_derate/=10;
+			}
+			else
+			{
+				ret = ret * 10 + (c - '0');
+			}
 		}
 		else if( c == 'k' || c == 'K' )
 		{
@@ -337,7 +383,7 @@ int ProcessEngineeringNumber( const char * e, float * num )
 		fprintf( stderr, "Error: junk after end of engineering number %c\n", c );
 		return -6;
 	} while( 1 );
-
+printf( "FINAL: %f\n", ret );
 	*num = (float)ret;
 	return 0;
 }
@@ -481,7 +527,7 @@ int main()
 	int gndNode = RBA( cktfile.netmap, "GND" );
 
 	int iteration;
-	for( iteration = 0; iteration < 10000; iteration++ )
+	for( iteration = 0; iteration < 20000; iteration++ )
 	{
 		sim.nodeVoltages[gndNode] = 0;
 		sim.nodeVoltages[vddNode] = 3.3;
@@ -511,7 +557,7 @@ int main()
 				cdiff -= deltaI / cv * tdelta;
 			sim.compVDiff[c] = cdiff;
 
-			//printf( "%f,%f,%f,+%c", deltaI, cdiff, vDiff, (c == sim.numComps-1) ? '\n':',' );
+		//	printf( "%d(%d,%d):%f,%f,%f[cv %f rv %f],+\n", c, n0, n1, deltaI*1000000, cdiff, vDiff*1000000, cv*1000000, rv);
 		}
 		
 		for( n = 0; n < sim.numNodes; n++ )
@@ -519,8 +565,16 @@ int main()
 			float nv;
 			//printf( "++ %f %f %f %f\n", sim.nodeVoltages[n], sim.nodeCurrents[n], sim.nodeCaps[n], tdelta );
 			sim.nodeVoltages[n] = nv = sim.nodeVoltages[n] + sim.nodeCurrents[n] / (sim.nodeCaps[n]) * tdelta;
-			//if( (iteration % 100) == 0)
-			printf( "[%s:%f,%f]%c", cktfile.netNames[n], nv, sim.nodeCurrents[n], (n == sim.numNodes-1) ? '\n':',' );
+			//	printf( "[%s:%d:%f,%f]%c", cktfile.netNames[n], n, nv, sim.nodeCurrents[n]*1000000, (n == sim.numNodes-1) ? '\n':',' );
+			if( iteration == 0 )
+			{
+				printf( "%s%c", cktfile.netNames[n], (n == sim.numNodes-1) ? '\n':',' );
+			}
+			else
+			{
+				if( (iteration % 10) == 0)
+					printf( "%f%c", nv, (n == sim.numNodes-1) ? '\n':',' );
+			}
 		}
 
 		for( c = 0; c < sim.numSuperComps; c++ )
@@ -533,91 +587,4 @@ int main()
 
 	return 0;
 
-
-
-#if 0
-
-	// Testing for a setup like:
-	//   (R+C) for all capacitors.
-	//   Possibly (R1||(R2+C))
-
-	float tdelta = 1.0e-12;
-	float mintargetnodecap = 1.0e-12; // Target capacitance for node (tell simulator not to go below this, even if it would be numerically stable.)
-
-	#define NODES 6
-	#define COMPS 5
-	float NodeVoltages[NODES] = { 0 };
-	float ComponentCurrents[COMPS] = { 0 };
-
-	// Instantaneous I deltas
-	float NodeIs[NODES] = { 0 };
-
-	const float ComponentRs[COMPS] = { 2, 1, 50, 1000, 1000 };
-	const float ComponentCs[COMPS] = { -1, 30.e-12, -1, 1.e-12, -1 };
-	float ComponentVDiff[COMPS] = { 0 };
-	int ComponentTerms[COMPS][2] = {
-		{ 0, 1 },
-		{ 1, 2 },
-		{ 2, 3 },
-		{ 2, 4 },
-		{ 4, 5 } };
-	float NodeCaps[NODES] = { 0 };
-	
-	int c;
-	for( c = 0; c < COMPS; c++ )
-	{
-		NodeCaps[ComponentTerms[c][0]] += tdelta / 1.9 / ComponentRs[c];
-		NodeCaps[ComponentTerms[c][1]] += tdelta / 1.9 / ComponentRs[c];
-	}
-	int n;
-	for( n = 0; n < NODES; n++ )
-	{
-		if( NodeCaps[n] < mintargetnodecap )
-			NodeCaps[n] = mintargetnodecap;
-		//printf( "NC %d %f\n", n, NodeCaps[n]*1.e12 );
-	}
-
-	int iteration;
-	for( iteration = 0; iteration < 10000; iteration++ )
-	{
-		NodeVoltages[0] = (sin(iteration/1000.0) * 2.50) > 0.0 ? 5.0 : 0.0;
-		NodeVoltages[3] = 0.0;
-		NodeVoltages[5] = 5.0;
-		for( n = 0; n < NODES; n++ )
-		{
-			NodeIs[n] = 0;
-		}
-
-		for( c = 0; c < COMPS; c++ )
-		{
-			int n0 = ComponentTerms[c][0];
-			int n1 = ComponentTerms[c][1];
-			float v0 = NodeVoltages[n0];
-			float v1 = NodeVoltages[n1];
-			float cdiff = ComponentVDiff[c];
-			float vDiff = v1 - v0 + cdiff;
-
-			float cv = ComponentCs[c];
-			float rv = ComponentRs[c];
-
-			float deltaI = vDiff / rv;
-			NodeIs[n0] += deltaI/2;
-			NodeIs[n1] -= deltaI/2;
-			
-			if( cv > 0 )
-				cdiff -= deltaI / cv * tdelta;
-			ComponentVDiff[c] = cdiff;
-			//printf( "%f,%f,%f,+%c", deltaI, cdiff, vDiff, (c == COMPS-1) ? '\n':',' );
-		}
-		
-		for( n = 0; n < NODES; n++ )
-		{
-			float nv;
-			NodeVoltages[n] = nv = NodeVoltages[n] + NodeIs[n] / (NodeCaps[n]) * tdelta;
-			//if( (iteration % 100) == 0)
-			printf( "%f,%f,+%c", nv, NodeIs[n], (n == NODES-1) ? '\n':',' );
-		}
-
-	}
-#endif
 }

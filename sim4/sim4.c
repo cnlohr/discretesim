@@ -5,6 +5,8 @@
 
 #include "circuitreader.h"
 
+float tdelta = 1.0e-12;
+
 struct supercomp_t
 {
 	void (*cb)( struct supercomp_t * s );
@@ -16,11 +18,13 @@ typedef struct
 	int     numNodes;
 	float * nodeCaps;
 	float * nodeVoltages;
+	float * nodeCurrents;
 
 	// Meta components
 	int     numComps;
 	float * compCaps;
 	float * compRes;
+	float * compVDiff;
 	int * compTerms;
 
 	struct supercomp_t ** superComps;
@@ -39,6 +43,18 @@ double Rand01()
 
 //////////////////////////////////////////////////////////////////////
 
+void * AddSuperComp( ckt_sim * sim, int size )
+{
+	int nsc = sim->numSuperComps;
+	int nscp1 = nsc+1;
+	sim->numSuperComps = nscp1;
+	sim->superComps = realloc( sim->superComps, sizeof( struct supercomp_t * ) * nscp1 );
+	sim->superComps[nsc] = calloc( size, 1 );
+	struct semicomp_nfet_t * sc = (struct semicomp_nfet_t *)sim->superComps[nsc];
+}
+
+//////////////////////////////////////////////////////////////////////
+
 struct semicomp_nfet_t
 {
 	void (*cb)( struct semicomp_nfet_t * s );
@@ -47,18 +63,57 @@ struct semicomp_nfet_t
 	float * vS;
 	float * vD;
 
-	float qGate;
-	float qDiode;
+	float * termR;
 
-	int mcompGS, mcompSD, mcompDG;
+	float gateCur;
+
+	int mcompGS, mcompSD, mcompSDR, mcompDG;
 };
 
 void NFetCB( struct semicomp_nfet_t * s )
 {
+	float vGS = *s->vG - *s->vS;
+	float dGSQ = (vGS - 1.9);
+	float gc = s->gateCur * .999 + dGSQ * .001;
+	if( gc < -1 ) gc = -1;
+	if( gc > 5  ) gc = 5;
+	s->gateCur = gc;
+
+	float fetR;
+	if( gc < 0.00001 )
+		fetR = 10.e6;
+	else
+		fetR = 15/gc;
+
+	float vfDiode = (*s->vS - *s->vD - 1.6);
+	float rDiode = 10.e6;
+	if( vfDiode > 0.00001 )
+		rDiode = 20/vfDiode;
+	
+	*(s->termR) = 1.0/(1.0/fetR + 1.0/rDiode);
 }
 
 void PFetCB( struct semicomp_nfet_t * s )
 {
+	float vSG = *s->vS - *s->vG;
+	float dGSQ = (vSG - 1.9);
+	float gc = s->gateCur * .9 + dGSQ * .1;
+	if( gc < -1 ) gc = -1;
+	if( gc > 5  ) gc = 5;
+	s->gateCur = gc;
+
+	float fetR;
+	if( gc < 0.00001 )
+		fetR = 10.e6;
+	else
+		fetR = 15/gc;
+
+	float vfDiode = (*s->vD - *s->vS - 1.6);
+	float rDiode = 10.e6;
+	if( vfDiode > 0.00001 )
+		rDiode = 20/vfDiode;
+	
+	*(s->termR) = 1.0/(1.0/fetR + 1.0/rDiode);
 }
 
 int AddFET( ckt_sim * sim, component * c, const char * type )
@@ -69,24 +124,19 @@ int AddFET( ckt_sim * sim, component * c, const char * type )
 		return -5;
 	}
 
-	int nsc = sim->numSuperComps;
-	int nscp1 = nsc+1;
-	sim->numSuperComps = nscp1;
-	sim->superComps = realloc( sim->superComps, sizeof( struct supercomp_t * ) * nscp1 );
-	sim->superComps[nsc] =
-		calloc( sizeof( struct semicomp_nfet_t ), 1 );
-	struct semicomp_nfet_t * sc = (struct semicomp_nfet_t *)sim->superComps[nsc];
+	struct semicomp_nfet_t * sc = AddSuperComp( sim, sizeof( struct semicomp_nfet_t ) );
 
 	int mcompGS = sc->mcompGS = AddMetaComp( sim );
 	int mcompSD = sc->mcompSD = AddMetaComp( sim );
+	int mcompSDR = sc->mcompSDR = AddMetaComp( sim );
 	int mcompDG = sc->mcompDG = AddMetaComp( sim );
 
 	int * mcompGSterms = &sim->compTerms[mcompGS*2];
 	int * mcompSDterms = &sim->compTerms[mcompSD*2];
+	int * mcompSDRterms = &sim->compTerms[mcompSDR*2];
 	int * mcompDGterms = &sim->compTerms[mcompDG*2];
 
-	sc->qGate  = Rand01() / 1.e-12; //in 0-1 pC
-	sc->qDiode = Rand01() / 1.e-12; //in 0-1 pC
+	sc->gateCur  = Rand01() * 1.e-12; //in 0-1 pC
 
 	// Nets are drain gate source
 	int nG = c->nets[1];
@@ -101,11 +151,24 @@ int AddFET( ckt_sim * sim, component * c, const char * type )
 	mcompGSterms[1] = nS;
 	mcompSDterms[0] = nS;
 	mcompSDterms[1] = nD;
+	mcompSDRterms[0] = nS;
+	mcompSDRterms[1] = nD;
 	mcompDGterms[0] = nD;
 	mcompDGterms[1] = nG;
 
-	sim->compCaps[mcompGS] = 1.e-12; // 1pF
-	sim->compRes[mcompGS] = 1.e6;
+	sim->compCaps[mcompGS] = 15.e-12; // ciss
+	sim->compRes[mcompGS] = 10; //RG
+
+	sim->compCaps[mcompDG] = 3.e-12; // crss
+	sim->compRes[mcompDG] = 10;
+
+	sim->compCaps[mcompSD] = 10.e-12; // coss
+	sim->compRes[mcompSD] = 1; //RG
+
+	sim->compCaps[mcompSDR] = -1;
+	sim->compRes[mcompSDR] = 1e6;
+
+	sc->termR = &sim->compRes[mcompSDR];
 
 	// Or PFet.
 	if( strcmp( type, "NCHAN" ) == 0 )
@@ -125,6 +188,57 @@ int AddFET( ckt_sim * sim, component * c, const char * type )
 }
 
 
+
+struct semicomp_led_t
+{
+	void (*cb)( struct semicomp_led_t * s );
+
+	float * vAnnode;
+	float * vCathode;
+
+	float * compR;
+
+	int mcomp;
+};
+
+
+void LEDCB( struct semicomp_led_t * s )
+{
+	float dF = *s->vAnnode - *s->vCathode;
+	float vF = 1.6;
+
+	dF -= vF;
+
+	if( dF < 0.00001 )
+		*s->compR = 10.e6;
+	else
+		*s->compR = 20/dF;
+}
+
+int AddLED( ckt_sim * sim, component * c, const char * type )
+{
+	struct semicomp_led_t * sc = AddSuperComp( sim, sizeof( struct semicomp_led_t ) );
+
+	sc->cb = LEDCB;
+
+	int nA = c->nets[0];
+	int nC = c->nets[1];
+
+	int mcomp = sc->mcomp = AddMetaComp( sim );
+
+	int * compterms = &sim->compTerms[mcomp*2];
+printf( "LED ADD: %d -> %d %d\n", mcomp, nA, nC );
+	compterms[0] = nA;
+	compterms[1] = nC;
+
+	sc->vAnnode = &sim->nodeVoltages[nA];
+	sc->vCathode = &sim->nodeVoltages[nC];
+	sc->compR = &sim->compRes[mcomp];
+	return 0;
+}
+
+////////////////////////////////////////////////////////////////////////////////
+
 int AddMetaComp( ckt_sim * s )
 {
 	int cid = s->numComps;
@@ -132,7 +246,17 @@ int AddMetaComp( ckt_sim * s )
 	s->numComps = cp1;
 	s->compCaps = realloc( s->compCaps, cp1 * sizeof( float ) );
 	s->compRes = realloc( s->compRes, cp1 * sizeof( float ) );
+	s->compVDiff = realloc( s->compVDiff, cp1 * sizeof( float ) );
 	s->compTerms = realloc( s->compTerms, cp1 * 2 * sizeof( int ) );
+
+	s->compCaps[cid] = -1;
+	s->compRes[cid] = 1;
+	s->compVDiff[cid] = Rand01() * 1.e-6;
+	s->compTerms[cid*2+0] = -1;
+	s->compTerms[cid*2+1] = -1;
+
+	printf( "add %d %d %p\n", cid, s->compTerms[0], s->compTerms );
+
 	return cid;
 }
 
@@ -223,6 +347,8 @@ ckt_sim sim;
 
 int main()
 {
+	int c;
+	int n;
 	int i;
 
 	FILE * f = fopen( "kicad/kicad.cir", "r" );
@@ -234,13 +360,13 @@ int main()
 	fseek( f, 0, SEEK_END );
 	int len = ftell( f );
 	fseek( f, 0, SEEK_SET );
-	char * buffer = malloc( len );
+	char * buffer = malloc( len + 1 );
 	if( fread( buffer, len, 1, f ) != 1 )
 	{
 		fprintf( stderr, "Error reading file\n" );
 		return -6;
 	}
-	
+	buffer[len] = 0;
 	int r = CircuitLoad( &cktfile, buffer );
 	if( r )
 	{
@@ -257,6 +383,16 @@ int main()
 
 	int numNodes = sim.numNodes = cktfile.numNets;
 	sim.nodeCaps = calloc( sizeof( float ), numNodes );
+	sim.nodeVoltages = calloc( sizeof( float ), numNodes );
+	sim.nodeCurrents = calloc( sizeof( float ), numNodes );
+
+
+	for( i = 0; i < numNodes; i++ )
+	{
+		sim.nodeCaps[i] = 5.e-13;
+		sim.nodeVoltages[i] = Rand01() * 1.e-12;
+		sim.nodeCurrents[i] = Rand01() * 1.e-12;
+	}
 
 	sim.numComps = 0;
 	int numUnknown = 0;
@@ -278,16 +414,21 @@ int main()
 			{
 				return -5;
 			}
+
+			int * compterms = &sim.compTerms[rnum*2];
+
+			compterms[0] = c->nets[0];
+			compterms[1] = c->nets[1];
+
 			printf( "\t\tAdded R %f\n", sim.compRes[rnum] );
 		}
 		else if( par1 && strcmp( par0, "VDMOS" ) == 0 )
 		{
-			printf( "\t\tAdding FET\n" );
 			if( AddFET( &sim, c, par1 ) ) return -5;
 		}
 		else if( strncmp( cid, "LED", 3 ) == 0 )
 		{
-			printf( "\t\tTODO: Adding LED\n" );
+			if( AddLED( &sim, c, par1 ) ) return -6;
 		}
 		else if( strncmp( cid, "TP", 2 ) == 0 )
 		{
@@ -304,6 +445,91 @@ int main()
 		printf( "Unknown components %d\n", numUnknown );
 
 	printf( "Metacomponents: %d\n", sim.numComps );
+
+	for( c = 0; c < sim.numComps; c++ )
+	{
+		double delta = tdelta / 1.9 / sim.compRes[c];
+		int n1 = sim.compTerms[c*2+0];
+		int n2 = sim.compTerms[c*2+1];
+		//printf( "%d %d %d\n", c, n1, n2 );
+		sim.nodeCaps[n1] += delta;
+		sim.nodeCaps[n2] += delta;
+	}
+
+	float mintargetnodecap = 1.0e-12; // Target capacitance for node (tell simulator not to go below this, even if it would be numerically stable.)
+
+	for( n = 0; n < sim.numNodes; n++ )
+	{
+		if( sim.nodeCaps[n] < mintargetnodecap )
+			sim.nodeCaps[n] = mintargetnodecap;
+	}
+
+
+	if( !RBHAS( cktfile.netmap, "VDD" ) )
+	{
+		fprintf( stderr, "Error: Need VDD node\n" );
+		return -9;
+	}
+
+	if( !RBHAS( cktfile.netmap, "GND" ) )
+	{
+		fprintf( stderr, "Error: Need GND node\n" );
+		return -10;
+	}
+
+	int vddNode = RBA( cktfile.netmap, "VDD" );
+	int gndNode = RBA( cktfile.netmap, "GND" );
+
+	int iteration;
+	for( iteration = 0; iteration < 10000; iteration++ )
+	{
+		sim.nodeVoltages[gndNode] = 0;
+		sim.nodeVoltages[vddNode] = 3.3;
+
+		for( n = 0; n < sim.numNodes; n++ )
+		{
+			sim.nodeCurrents[n] = 0;
+		}
+
+		for( c = 0; c < sim.numComps; c++ )
+		{
+			int n0 = sim.compTerms[c*2+0];
+			int n1 = sim.compTerms[c*2+1];
+			float v0 = sim.nodeVoltages[n0];
+			float v1 = sim.nodeVoltages[n1];
+			float cdiff = sim.compVDiff[c];
+			float vDiff = v1 - v0 + cdiff;
+
+			float cv = sim.compCaps[c];
+			float rv = sim.compRes[c];
+
+			float deltaI = vDiff / rv;
+			sim.nodeCurrents[n0] += deltaI/2;
+			sim.nodeCurrents[n1] -= deltaI/2;
+			
+			if( cv > 0 )
+				cdiff -= deltaI / cv * tdelta;
+			sim.compVDiff[c] = cdiff;
+
+			//printf( "%f,%f,%f,+%c", deltaI, cdiff, vDiff, (c == sim.numComps-1) ? '\n':',' );
+		}
+		
+		for( n = 0; n < sim.numNodes; n++ )
+		{
+			float nv;
+			//printf( "++ %f %f %f %f\n", sim.nodeVoltages[n], sim.nodeCurrents[n], sim.nodeCaps[n], tdelta );
+			sim.nodeVoltages[n] = nv = sim.nodeVoltages[n] + sim.nodeCurrents[n] / (sim.nodeCaps[n]) * tdelta;
+			//if( (iteration % 100) == 0)
+			printf( "[%s:%f,%f]%c", cktfile.netNames[n], nv, sim.nodeCurrents[n], (n == sim.numNodes-1) ? '\n':',' );
+		}
+
+		for( c = 0; c < sim.numSuperComps; c++ )
+		{
+			struct supercomp_t * sc = sim.superComps[c];
+			sc->cb( sc );
+		}
+	}
+
 
 	return 0;
 

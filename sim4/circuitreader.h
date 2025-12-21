@@ -20,10 +20,12 @@ typedef struct
 	int    nets[MAXNETSPERNODE];
 } component;
 
+typedef component * componentptr;
 typedef char * str;
+
 CNRBTREETEMPLATE( str, int, RBstrcmp, RBstrcpy, RBstrdel );
 CNRBTREETEMPLATE( str, str, RBstrcmp, RBstrcpy, RBstrdel );
-CNRBTREETEMPLATE( str, component, RBstrcmp, RBstrcpy, RBstrdel );
+CNRBTREETEMPLATE( str, componentptr, RBstrcmp, RBstrcpy, RBstrdel );
 CNRBTREETEMPLATE( str, model, RBstrcmp, RBstrcpy, RBstrdel );
 
 typedef struct cir_reader_t
@@ -39,7 +41,7 @@ typedef struct cir_reader_t
 	cnrbtree_strint   * netmap;
 
 	cnrbtree_strmodel * modelmap;
-	cnrbtree_strcomponent * componentmap;
+	cnrbtree_strcomponentptr * componentmap;
 
 	cnrbtree_strint * tpmap;
 } cir_reader;

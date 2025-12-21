@@ -28,7 +28,7 @@ int CircuitLoad( cir_reader * s, char * cir )
 
 	s->netmap = cnrbtree_strint_create();
 	s->modelmap = cnrbtree_strmodel_create();
-	s->componentmap = cnrbtree_strcomponent_create();
+	s->componentmap = cnrbtree_strcomponentptr_create();
 
 	int lineno = 0;
 	int iseof = 0;
@@ -100,14 +100,15 @@ int CircuitLoad( cir_reader * s, char * cir )
 					int nid = s->numNets++;
 					s->netNames = realloc( s->netNames, sizeof( char*) * s->numNets );
 					s->netNames[nid] = par;
+					m.nets[i] = nid;
 					RBA( s->netmap, par ) = nid;
 				}
 			}
 
-			RBA( s->componentmap, identifier ) = m;
 			int nc = s->numComponents++;
 			s->components = realloc( s->components, s->numComponents * sizeof( component ) );
 			s->components[nc] = m;
+			RBA( s->componentmap, identifier ) = &s->components[nc];
 		}
 	} while( !iseof );
 

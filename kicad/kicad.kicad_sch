@@ -1223,6 +1223,16 @@
 	)
 	(text "reattach"
 		(exclude_from_sim no)
+		(at 122.682 98.806 0)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+		)
+		(uuid "562f45cd-2451-4d15-85ac-b29a3e3a40cc")
+	)
+	(text "reattach"
+		(exclude_from_sim no)
 		(at 160.528 150.876 0)
 		(effects
 			(font
@@ -1230,6 +1240,12 @@
 			)
 		)
 		(uuid "7c8889c7-04ec-4ab6-a893-00266521b0cd")
+	)
+	(junction
+		(at 119.38 73.66)
+		(diameter 0)
+		(color 0 0 0 0)
+		(uuid "13e24114-b0f6-430a-88d8-9156e07a926a")
 	)
 	(junction
 		(at 175.26 31.75)
@@ -1254,6 +1270,12 @@
 		(diameter 0)
 		(color 0 0 0 0)
 		(uuid "21e65a83-2411-43c0-b535-2b3c0cd8fce7")
+	)
+	(junction
+		(at 127 96.52)
+		(diameter 0)
+		(color 0 0 0 0)
+		(uuid "32f8e101-7f6f-454c-b8a4-9f4767cae8fc")
 	)
 	(junction
 		(at 77.47 30.48)
@@ -1298,6 +1320,18 @@
 		(uuid "67f68acf-0ce1-427d-9ac2-4fa59678d59c")
 	)
 	(junction
+		(at 163.83 119.38)
+		(diameter 0)
+		(color 0 0 0 0)
+		(uuid "6bbfb220-3e00-4a6e-8450-695299670185")
+	)
+	(junction
+		(at 62.23 115.57)
+		(diameter 0)
+		(color 0 0 0 0)
+		(uuid "714127d7-9837-47fa-acd7-988457f54b3b")
+	)
+	(junction
 		(at 119.38 46.99)
 		(diameter 0)
 		(color 0 0 0 0)
@@ -1308,6 +1342,12 @@
 		(diameter 0)
 		(color 0 0 0 0)
 		(uuid "75ee9a99-24bf-40a4-9408-3cd3311d28e4")
+	)
+	(junction
+		(at 55.88 172.72)
+		(diameter 0)
+		(color 0 0 0 0)
+		(uuid "78d0c463-1f4b-4c11-ad08-a59a5e103356")
 	)
 	(junction
 		(at 67.31 30.48)
@@ -1346,10 +1386,28 @@
 		(uuid "a0753877-ef09-4caa-9340-cec47fa05717")
 	)
 	(junction
-		(at 107.95 35.56)
+		(at 67.31 115.57)
 		(diameter 0)
 		(color 0 0 0 0)
-		(uuid "b8db0238-68a7-47df-8ec1-b51f3fc3e0dc")
+		(uuid "b1a7e3ca-ee4e-4eaf-8291-747921f49fca")
+	)
+	(junction
+		(at 54.61 115.57)
+		(diameter 0)
+		(color 0 0 0 0)
+		(uuid "b1e69f29-fb86-45fb-aaab-1040718cd997")
+	)
+	(junction
+		(at 130.81 73.66)
+		(diameter 0)
+		(color 0 0 0 0)
+		(uuid "bd90a4d0-2eb4-4270-ab46-06fe1a04f737")
+	)
+	(junction
+		(at 54.61 105.41)
+		(diameter 0)
+		(color 0 0 0 0)
+		(uuid "c26f7194-15e0-4993-b97a-f0d19c9764fc")
 	)
 	(junction
 		(at 95.25 30.48)
@@ -1370,12 +1428,6 @@
 		(uuid "d2bb7155-4589-47d7-a5aa-db4f53a751c6")
 	)
 	(junction
-		(at 130.81 73.66)
-		(diameter 0)
-		(color 0 0 0 0)
-		(uuid "d325f5d7-67b8-4a9d-8a97-c77cb0536131")
-	)
-	(junction
 		(at 74.93 30.48)
 		(diameter 0)
 		(color 0 0 0 0)
@@ -1386,6 +1438,12 @@
 		(diameter 0)
 		(color 0 0 0 0)
 		(uuid "ea20b940-e93e-4e44-9288-dcf2702ce08c")
+	)
+	(junction
+		(at 52.07 172.72)
+		(diameter 0)
+		(color 0 0 0 0)
+		(uuid "edb38957-83a2-49c5-b2c6-b35437b545bb")
 	)
 	(junction
 		(at 107.95 30.48)
@@ -1419,13 +1477,13 @@
 	)
 	(wire
 		(pts
-			(xy 107.95 44.45) (xy 107.95 35.56)
+			(xy 55.88 167.64) (xy 55.88 172.72)
 		)
 		(stroke
 			(width 0)
 			(type default)
 		)
-		(uuid "04acbf91-649f-4b83-898e-efa1e7aa72c7")
+		(uuid "0573efc6-9c90-4972-8206-0c9c91d793f5")
 	)
 	(wire
 		(pts
@@ -1469,6 +1527,16 @@
 	)
 	(wire
 		(pts
+			(xy 54.61 100.33) (xy 54.61 105.41)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "1ff21214-f310-45a5-89d6-033226305051")
+	)
+	(wire
+		(pts
 			(xy 97.79 25.4) (xy 97.79 30.48)
 		)
 		(stroke
@@ -1476,6 +1544,16 @@
 			(type default)
 		)
 		(uuid "26207a10-791f-435a-bbe1-ca828066ae50")
+	)
+	(wire
+		(pts
+			(xy 127 96.52) (xy 127 101.6)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "263bb159-d981-4160-b9cd-60ac080fd6ff")
 	)
 	(wire
 		(pts
@@ -1519,6 +1597,16 @@
 	)
 	(wire
 		(pts
+			(xy 130.81 78.74) (xy 138.43 78.74)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "3a110332-35d2-4803-89b8-d5c8c9a5efdb")
+	)
+	(wire
+		(pts
 			(xy 34.29 25.4) (xy 34.29 30.48)
 		)
 		(stroke
@@ -1559,6 +1647,26 @@
 	)
 	(wire
 		(pts
+			(xy 67.31 115.57) (xy 67.31 115.3563)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "4ed891fb-6e89-4a00-91d3-cc69dc7150fc")
+	)
+	(wire
+		(pts
+			(xy 67.31 115.3563) (xy 66.5311 115.3563)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "523d30ee-1dc7-4485-aaf4-705da7d1ab92")
+	)
+	(wire
+		(pts
 			(xy 175.26 16.51) (xy 175.26 21.59)
 		)
 		(stroke
@@ -1589,6 +1697,16 @@
 	)
 	(wire
 		(pts
+			(xy 127 91.44) (xy 127 96.52)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "67d5cca6-79e4-4f0d-b7bf-24487b6befa4")
+	)
+	(wire
+		(pts
 			(xy 24.13 25.4) (xy 24.13 35.56)
 		)
 		(stroke
@@ -1609,6 +1727,16 @@
 	)
 	(wire
 		(pts
+			(xy 55.88 172.72) (xy 62.23 172.72)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "6f0cb401-90b6-465e-a5b8-e8b687f70858")
+	)
+	(wire
+		(pts
 			(xy 41.91 30.48) (xy 44.45 30.48)
 		)
 		(stroke
@@ -1619,6 +1747,16 @@
 	)
 	(wire
 		(pts
+			(xy 54.61 115.57) (xy 62.23 115.57)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "71aef172-fe8a-425c-85ea-293e48f9c270")
+	)
+	(wire
+		(pts
 			(xy 24.13 46.99) (xy 24.13 35.56)
 		)
 		(stroke
@@ -1626,6 +1764,16 @@
 			(type default)
 		)
 		(uuid "730859a7-9388-41c4-af64-49364c7733b9")
+	)
+	(wire
+		(pts
+			(xy 130.81 73.66) (xy 138.43 73.66)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "740b410b-dd65-4afe-b9da-c690acf78a92")
 	)
 	(wire
 		(pts
@@ -1779,6 +1927,16 @@
 	)
 	(wire
 		(pts
+			(xy 62.23 115.57) (xy 67.31 115.57)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "bacb7384-effb-4342-8c8a-a3ad070970f9")
+	)
+	(wire
+		(pts
 			(xy 243.84 83.82) (xy 259.08 83.82)
 		)
 		(stroke
@@ -1786,6 +1944,16 @@
 			(type default)
 		)
 		(uuid "bc454fcb-1143-4db6-90bf-31dcd85e1d64")
+	)
+	(wire
+		(pts
+			(xy 119.38 96.52) (xy 119.38 73.66)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "c29bf4bd-9955-49ec-9b31-2fff313cd9e1")
 	)
 	(wire
 		(pts
@@ -1859,6 +2027,16 @@
 	)
 	(wire
 		(pts
+			(xy 127 96.52) (xy 119.38 96.52)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "ddb6efb2-54d4-480c-ad3a-3649ff7ab668")
+	)
+	(wire
+		(pts
 			(xy 107.95 25.4) (xy 107.95 30.48)
 		)
 		(stroke
@@ -1876,6 +2054,16 @@
 			(type default)
 		)
 		(uuid "eb7a194d-f9a3-4690-b5d0-517352f25f90")
+	)
+	(wire
+		(pts
+			(xy 55.88 172.72) (xy 52.07 172.72)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "ecafab23-0ad2-41eb-8375-c821ef797703")
 	)
 	(wire
 		(pts
@@ -1899,6 +2087,16 @@
 	)
 	(wire
 		(pts
+			(xy 52.07 172.72) (xy 48.26 172.72)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "f160e77a-9cf2-4ef3-9322-f310f36725fc")
+	)
+	(wire
+		(pts
 			(xy 97.79 30.48) (xy 97.79 35.56)
 		)
 		(stroke
@@ -1906,6 +2104,38 @@
 			(type default)
 		)
 		(uuid "f420dab7-25d4-4629-826f-35d79469e223")
+	)
+	(wire
+		(pts
+			(xy 54.61 105.41) (xy 67.31 105.41)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "f95df159-b44b-4f21-8198-af2c1a9fa02f")
+	)
+	(global_label "NANDTESTA"
+		(shape input)
+		(at 46.99 120.65 180)
+		(fields_autoplaced yes)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+			(justify right)
+		)
+		(uuid "041bd692-7e9a-4097-af7f-9af2deb99fb2")
+		(property "Intersheetrefs" "${INTERSHEET_REFS}"
+			(at 33.6029 120.65 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify right)
+				(hide yes)
+			)
+		)
 	)
 	(global_label "XORA1"
 		(shape input)
@@ -1947,6 +2177,72 @@
 					(size 1.27 1.27)
 				)
 				(justify right)
+				(hide yes)
+			)
+		)
+	)
+	(global_label "BUFFERED_CLK"
+		(shape input)
+		(at 35.56 101.6 180)
+		(fields_autoplaced yes)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+			(justify right)
+		)
+		(uuid "0f44d9e4-2a45-414f-9c24-8fd7d0b09bfe")
+		(property "Intersheetrefs" "${INTERSHEET_REFS}"
+			(at 18.4234 101.6 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify right)
+				(hide yes)
+			)
+		)
+	)
+	(global_label "BUFFERED_DIV2"
+		(shape input)
+		(at 38.1 143.51 180)
+		(fields_autoplaced yes)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+			(justify right)
+		)
+		(uuid "18d94f53-b091-454f-ba5f-0364170706a8")
+		(property "Intersheetrefs" "${INTERSHEET_REFS}"
+			(at 20.3586 143.51 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify right)
+				(hide yes)
+			)
+		)
+	)
+	(global_label "NORTESTA"
+		(shape input)
+		(at 38.1 143.51 0)
+		(fields_autoplaced yes)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+			(justify left)
+		)
+		(uuid "19679918-9004-4cb4-9623-79505c8bab2a")
+		(property "Intersheetrefs" "${INTERSHEET_REFS}"
+			(at 50.3985 143.51 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
 				(hide yes)
 			)
 		)
@@ -1995,6 +2291,28 @@
 			)
 		)
 	)
+	(global_label "BUFFERED_DIV2"
+		(shape input)
+		(at 163.83 123.19 0)
+		(fields_autoplaced yes)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+			(justify left)
+		)
+		(uuid "1e256a88-3cd2-4f18-83d6-6536ff564496")
+		(property "Intersheetrefs" "${INTERSHEET_REFS}"
+			(at 181.5714 123.19 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+				(hide yes)
+			)
+		)
+	)
 	(global_label "NANDA0"
 		(shape input)
 		(at 167.64 26.67 180)
@@ -2035,6 +2353,28 @@
 					(size 1.27 1.27)
 				)
 				(justify right)
+				(hide yes)
+			)
+		)
+	)
+	(global_label "NANDTESTB"
+		(shape input)
+		(at 59.69 110.49 90)
+		(fields_autoplaced yes)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+			(justify left)
+		)
+		(uuid "23398e13-ac38-463a-ad54-345ea3d2c367")
+		(property "Intersheetrefs" "${INTERSHEET_REFS}"
+			(at 59.69 96.9215 90)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
 				(hide yes)
 			)
 		)
@@ -2140,6 +2480,28 @@
 		(uuid "2f6b193f-bcec-44db-8f07-5101976f9a54")
 		(property "Intersheetrefs" "${INTERSHEET_REFS}"
 			(at 84.5675 30.48 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+				(hide yes)
+			)
+		)
+	)
+	(global_label "NANDTESTOUT"
+		(shape input)
+		(at 67.31 115.57 0)
+		(fields_autoplaced yes)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+			(justify left)
+		)
+		(uuid "30838b39-9793-4b6b-b775-2e75ede34da2")
+		(property "Intersheetrefs" "${INTERSHEET_REFS}"
+			(at 83.2371 115.57 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -2325,6 +2687,28 @@
 			)
 		)
 	)
+	(global_label "BUFFERED_CLK"
+		(shape input)
+		(at 134.62 96.52 0)
+		(fields_autoplaced yes)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+			(justify left)
+		)
+		(uuid "4ea7ccae-3627-48c9-a0fd-f32c2bf44586")
+		(property "Intersheetrefs" "${INTERSHEET_REFS}"
+			(at 151.7566 96.52 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+				(hide yes)
+			)
+		)
+	)
 	(global_label "NANDB0"
 		(shape input)
 		(at 180.34 26.67 90)
@@ -2360,6 +2744,50 @@
 		(uuid "53121854-aa80-4458-9791-d649c4f5ada4")
 		(property "Intersheetrefs" "${INTERSHEET_REFS}"
 			(at 157.1557 92.71 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify right)
+				(hide yes)
+			)
+		)
+	)
+	(global_label "BUFFERED_CLK"
+		(shape input)
+		(at 38.1 146.05 180)
+		(fields_autoplaced yes)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+			(justify right)
+		)
+		(uuid "56d7ed3f-ffb3-40b9-ac3d-477437157333")
+		(property "Intersheetrefs" "${INTERSHEET_REFS}"
+			(at 20.9634 146.05 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify right)
+				(hide yes)
+			)
+		)
+	)
+	(global_label "NORTESTB"
+		(shape input)
+		(at 48.26 162.56 180)
+		(fields_autoplaced yes)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+			(justify right)
+		)
+		(uuid "5b14eb94-e4ef-489a-b2b9-faa722a4a899")
+		(property "Intersheetrefs" "${INTERSHEET_REFS}"
+			(at 35.7801 162.56 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -2413,9 +2841,31 @@
 			)
 		)
 	)
+	(global_label "NANDTESTB"
+		(shape input)
+		(at 35.56 101.6 0)
+		(fields_autoplaced yes)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+			(justify left)
+		)
+		(uuid "69341d07-2b95-431a-8330-94d5b813026b")
+		(property "Intersheetrefs" "${INTERSHEET_REFS}"
+			(at 49.1285 101.6 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+				(hide yes)
+			)
+		)
+	)
 	(global_label "NANDA0"
 		(shape input)
-		(at 170.18 148.59 90)
+		(at 162.56 148.59 0)
 		(fields_autoplaced yes)
 		(effects
 			(font
@@ -2425,7 +2875,7 @@
 		)
 		(uuid "6b484000-f599-43c5-a4ef-7e9be632e4d7")
 		(property "Intersheetrefs" "${INTERSHEET_REFS}"
-			(at 170.18 138.2871 90)
+			(at 172.8629 148.59 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -2479,6 +2929,28 @@
 			)
 		)
 	)
+	(global_label "NANDTESTA"
+		(shape input)
+		(at 46.99 110.49 180)
+		(fields_autoplaced yes)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+			(justify right)
+		)
+		(uuid "74030b96-6f94-4d7c-a8b8-4d6f3221a180")
+		(property "Intersheetrefs" "${INTERSHEET_REFS}"
+			(at 33.6029 110.49 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify right)
+				(hide yes)
+			)
+		)
+	)
 	(global_label "XORA1"
 		(shape input)
 		(at 231.14 88.9 180)
@@ -2514,6 +2986,28 @@
 		(uuid "75e1c9fc-1710-4009-944c-6fe630b7d64d")
 		(property "Intersheetrefs" "${INTERSHEET_REFS}"
 			(at 261.8837 48.26 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+				(hide yes)
+			)
+		)
+	)
+	(global_label "NORTESTB"
+		(shape input)
+		(at 38.1 146.05 0)
+		(fields_autoplaced yes)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+			(justify left)
+		)
+		(uuid "75e571f0-633d-4a86-9064-db6106d00c2f")
+		(property "Intersheetrefs" "${INTERSHEET_REFS}"
+			(at 50.5799 146.05 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -2679,7 +3173,7 @@
 	)
 	(global_label "NANDA1"
 		(shape input)
-		(at 171.45 125.73 90)
+		(at 163.83 125.73 0)
 		(fields_autoplaced yes)
 		(effects
 			(font
@@ -2689,7 +3183,7 @@
 		)
 		(uuid "8c17267d-772a-4d10-9d44-2453d27a18d8")
 		(property "Intersheetrefs" "${INTERSHEET_REFS}"
-			(at 171.45 115.4271 90)
+			(at 174.1329 125.73 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -2765,6 +3259,28 @@
 			)
 		)
 	)
+	(global_label "NORTESTA"
+		(shape input)
+		(at 48.26 152.4 180)
+		(fields_autoplaced yes)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+			(justify right)
+		)
+		(uuid "96e73daa-cb25-4e1d-b1e0-9bb3dc5170bf")
+		(property "Intersheetrefs" "${INTERSHEET_REFS}"
+			(at 35.9615 152.4 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify right)
+				(hide yes)
+			)
+		)
+	)
 	(global_label "XORQ1"
 		(shape input)
 		(at 259.08 83.82 0)
@@ -2809,6 +3325,28 @@
 			)
 		)
 	)
+	(global_label "NANDTESTA"
+		(shape input)
+		(at 35.56 99.06 0)
+		(fields_autoplaced yes)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+			(justify left)
+		)
+		(uuid "997b0f76-f317-44ed-95a8-ea81b00c5f7c")
+		(property "Intersheetrefs" "${INTERSHEET_REFS}"
+			(at 48.9471 99.06 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+				(hide yes)
+			)
+		)
+	)
 	(global_label "XORnB1"
 		(shape input)
 		(at 251.46 99.06 0)
@@ -2844,6 +3382,28 @@
 		(uuid "9db1a207-874c-4140-b0a5-de36ddd3f1a0")
 		(property "Intersheetrefs" "${INTERSHEET_REFS}"
 			(at 201.5453 157.48 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify right)
+				(hide yes)
+			)
+		)
+	)
+	(global_label "NANDTESTB"
+		(shape input)
+		(at 46.99 130.81 180)
+		(fields_autoplaced yes)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+			(justify right)
+		)
+		(uuid "9e02af16-f1a4-4cfc-97e4-e7b4a04f063f")
+		(property "Intersheetrefs" "${INTERSHEET_REFS}"
+			(at 33.4215 130.81 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -3029,6 +3589,28 @@
 			)
 		)
 	)
+	(global_label "NORTESTA"
+		(shape input)
+		(at 40.64 177.8 180)
+		(fields_autoplaced yes)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+			(justify right)
+		)
+		(uuid "b3ab33f6-0c79-4391-880f-eb8eec5bcd7d")
+		(property "Intersheetrefs" "${INTERSHEET_REFS}"
+			(at 28.3415 177.8 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify right)
+				(hide yes)
+			)
+		)
+	)
 	(global_label "XORQ1"
 		(shape input)
 		(at 162.56 148.59 180)
@@ -3069,6 +3651,72 @@
 					(size 1.27 1.27)
 				)
 				(justify right)
+				(hide yes)
+			)
+		)
+	)
+	(global_label "BUFFERED_DIV2"
+		(shape input)
+		(at 35.56 99.06 180)
+		(fields_autoplaced yes)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+			(justify right)
+		)
+		(uuid "c017456c-0cd2-4421-83e1-e2ce6890b1d6")
+		(property "Intersheetrefs" "${INTERSHEET_REFS}"
+			(at 17.8186 99.06 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify right)
+				(hide yes)
+			)
+		)
+	)
+	(global_label "NORTESTB"
+		(shape input)
+		(at 54.61 177.8 270)
+		(fields_autoplaced yes)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+			(justify right)
+		)
+		(uuid "c0502182-2cfc-42dd-8c62-5fc3d4452192")
+		(property "Intersheetrefs" "${INTERSHEET_REFS}"
+			(at 54.61 190.2799 90)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify right)
+				(hide yes)
+			)
+		)
+	)
+	(global_label "BUFFERED_CLK"
+		(shape input)
+		(at 143.51 101.6 0)
+		(fields_autoplaced yes)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+			(justify left)
+		)
+		(uuid "c48b452f-45cc-4fe0-92f7-716c5d5e2188")
+		(property "Intersheetrefs" "${INTERSHEET_REFS}"
+			(at 160.6466 101.6 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
 				(hide yes)
 			)
 		)
@@ -3141,7 +3789,7 @@
 	)
 	(global_label "XORQ1"
 		(shape input)
-		(at 264.16 107.95 180)
+		(at 271.78 107.95 180)
 		(fields_autoplaced yes)
 		(effects
 			(font
@@ -3151,7 +3799,7 @@
 		)
 		(uuid "cb8c8532-8792-46db-88f4-20c5e0d9a6dc")
 		(property "Intersheetrefs" "${INTERSHEET_REFS}"
-			(at 254.8248 107.95 0)
+			(at 262.4448 107.95 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -3403,6 +4051,28 @@
 			)
 		)
 	)
+	(global_label "NORTESTOUT"
+		(shape input)
+		(at 55.88 167.64 0)
+		(fields_autoplaced yes)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+			(justify left)
+		)
+		(uuid "fa2f167a-dd81-4d9b-9a53-20d9bcfd5705")
+		(property "Intersheetrefs" "${INTERSHEET_REFS}"
+			(at 70.7185 167.64 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+				(hide yes)
+			)
+		)
+	)
 	(global_label "XORQ1"
 		(shape input)
 		(at 210.82 45.72 180)
@@ -3444,6 +4114,116 @@
 				)
 				(justify right)
 				(hide yes)
+			)
+		)
+	)
+	(symbol
+		(lib_id "Device:Q_PMOS_GSD")
+		(at 132.08 91.44 0)
+		(mirror x)
+		(unit 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(dnp no)
+		(uuid "0367bca6-5000-4425-bb07-c171bf0b498c")
+		(property "Reference" "P29"
+			(at 128.016 88.138 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+			)
+		)
+		(property "Value" "RZM001P02T2L"
+			(at 138.43 90.1701 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+				(hide yes)
+			)
+		)
+		(property "Footprint" "cnhardware:SOT-723-COMPACTP"
+			(at 137.16 93.98 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Datasheet" "~"
+			(at 132.08 91.44 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Description" "P-MOSFET transistor, gate/source/drain"
+			(at 132.08 91.44 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "LCSC" "C308762"
+			(at 132.08 91.44 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Sim.Device" "PMOS"
+			(at 132.08 91.44 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Sim.Type" "VDMOS"
+			(at 132.08 91.44 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Sim.Pins" "1=G 2=S 3=D"
+			(at 132.08 91.44 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(pin "3"
+			(uuid "714d6939-5318-4576-8f44-9df20b3ac4cf")
+		)
+		(pin "1"
+			(uuid "d1bb2e5b-c96d-4c45-b5cf-a5995ffa3786")
+		)
+		(pin "2"
+			(uuid "527d746a-49e6-4fda-8cf5-8b8fbe053ae0")
+		)
+		(instances
+			(project "kicad"
+				(path "/d386f80f-1709-42ec-8243-5d17ab4d0026"
+					(reference "P29")
+					(unit 1)
+				)
 			)
 		)
 	)
@@ -3617,6 +4397,136 @@
 			(project "kicad"
 				(path "/d386f80f-1709-42ec-8243-5d17ab4d0026"
 					(reference "#PWR031")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
+		(lib_id "power:GND")
+		(at 54.61 135.89 0)
+		(unit 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(dnp no)
+		(uuid "0aad85a8-7470-4ca6-94be-f2e2f8c6c8d3")
+		(property "Reference" "#PWR045"
+			(at 54.61 142.24 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Value" "GND"
+			(at 57.15 135.636 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Footprint" ""
+			(at 54.61 135.89 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Datasheet" ""
+			(at 54.61 135.89 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Description" "Power symbol creates a global label with name \"GND\" , ground"
+			(at 54.61 135.89 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(pin "1"
+			(uuid "f7333b71-4f68-4bf9-ada0-007e7d6b8555")
+		)
+		(instances
+			(project "kicad"
+				(path "/d386f80f-1709-42ec-8243-5d17ab4d0026"
+					(reference "#PWR045")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
+		(lib_id "power:GND")
+		(at 62.23 182.88 0)
+		(unit 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(dnp no)
+		(uuid "1025c89a-8da6-4174-aeb1-9afad604290b")
+		(property "Reference" "#PWR049"
+			(at 62.23 189.23 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Value" "GND"
+			(at 64.77 182.626 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Footprint" ""
+			(at 62.23 182.88 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Datasheet" ""
+			(at 62.23 182.88 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Description" "Power symbol creates a global label with name \"GND\" , ground"
+			(at 62.23 182.88 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(pin "1"
+			(uuid "6fd720c8-abcb-4175-8ed7-3e4ab4b603da")
+		)
+		(instances
+			(project "kicad"
+				(path "/d386f80f-1709-42ec-8243-5d17ab4d0026"
+					(reference "#PWR049")
 					(unit 1)
 				)
 			)
@@ -4695,6 +5605,211 @@
 	)
 	(symbol
 		(lib_id "Device:Q_NMOS_GSD")
+		(at 52.07 130.81 0)
+		(unit 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(dnp no)
+		(uuid "205547f4-65d1-4d34-b66c-cc35c3629f6e")
+		(property "Reference" "N28"
+			(at 49.022 127.254 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+			)
+		)
+		(property "Value" "2SK3541"
+			(at 58.42 132.0799 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+				(hide yes)
+			)
+		)
+		(property "Footprint" "cnhardware:SOT-723-COMPACT"
+			(at 57.15 128.27 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Datasheet" "~"
+			(at 52.07 130.81 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Description" "N-MOSFET transistor, gate/source/drain"
+			(at 52.07 130.81 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "LCSC" "C42402303"
+			(at 52.07 130.81 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Sim.Device" "NMOS"
+			(at 52.07 130.81 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Sim.Type" "VDMOS"
+			(at 52.07 130.81 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Sim.Pins" "1=G 2=S 3=D"
+			(at 52.07 130.81 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(pin "1"
+			(uuid "d544e41e-645f-4b1e-b2e9-71e67e766038")
+		)
+		(pin "2"
+			(uuid "6847a154-8b05-42c9-be6b-e250a382ec63")
+		)
+		(pin "3"
+			(uuid "70e02740-ddf0-404c-83df-c481eecda716")
+		)
+		(instances
+			(project "kicad"
+				(path "/d386f80f-1709-42ec-8243-5d17ab4d0026"
+					(reference "N28")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
+		(lib_id "Connector:TestPoint")
+		(at 62.23 115.57 180)
+		(unit 1)
+		(exclude_from_sim no)
+		(in_bom no)
+		(on_board yes)
+		(dnp no)
+		(fields_autoplaced yes)
+		(uuid "22905ffd-d469-43cb-ba6d-78e02611d940")
+		(property "Reference" "TP5"
+			(at 63.5001 120.65 90)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+				(hide yes)
+			)
+		)
+		(property "Value" "TP"
+			(at 64.77 118.8719 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify right)
+				(hide yes)
+			)
+		)
+		(property "Footprint" "cnhardware:TPTHRU"
+			(at 57.15 115.57 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Datasheet" "~"
+			(at 57.15 115.57 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Description" "test point"
+			(at 62.23 115.57 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "LCSC" "C25503131"
+			(at 62.23 115.57 90)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Sim.Device" "TP"
+			(at 62.23 115.57 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Sim.Params" "ROON"
+			(at 62.23 115.57 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(pin "1"
+			(uuid "7d13e5db-6d8e-4830-adad-911e3dbef068")
+		)
+		(instances
+			(project "kicad"
+				(path "/d386f80f-1709-42ec-8243-5d17ab4d0026"
+					(reference "TP5")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
+		(lib_id "Device:Q_NMOS_GSD")
 		(at 172.72 82.55 0)
 		(unit 1)
 		(exclude_from_sim no)
@@ -4972,6 +6087,115 @@
 			(project "kicad"
 				(path "/d386f80f-1709-42ec-8243-5d17ab4d0026"
 					(reference "P14")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
+		(lib_id "Device:Q_NMOS_GSD")
+		(at 52.07 120.65 0)
+		(unit 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(dnp no)
+		(uuid "300adb3b-e3d7-4c17-9557-3a871a79e79d")
+		(property "Reference" "N27"
+			(at 49.022 117.094 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+			)
+		)
+		(property "Value" "2SK3541"
+			(at 58.42 121.9199 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+				(hide yes)
+			)
+		)
+		(property "Footprint" "cnhardware:SOT-723-COMPACT"
+			(at 57.15 118.11 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Datasheet" "~"
+			(at 52.07 120.65 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Description" "N-MOSFET transistor, gate/source/drain"
+			(at 52.07 120.65 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "LCSC" "C42402303"
+			(at 52.07 120.65 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Sim.Device" "NMOS"
+			(at 52.07 120.65 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Sim.Type" "VDMOS"
+			(at 52.07 120.65 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Sim.Pins" "1=G 2=S 3=D"
+			(at 52.07 120.65 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(pin "1"
+			(uuid "b95ef743-7592-435f-8159-33aaf26eb982")
+		)
+		(pin "2"
+			(uuid "45eaf628-13d6-48bc-8b9c-04f7430baef8")
+		)
+		(pin "3"
+			(uuid "fb1bd5fe-dcdb-45d5-9a6b-738b351482f1")
+		)
+		(instances
+			(project "kicad"
+				(path "/d386f80f-1709-42ec-8243-5d17ab4d0026"
+					(reference "N27")
 					(unit 1)
 				)
 			)
@@ -5766,17 +6990,26 @@
 		)
 	)
 	(symbol
-		(lib_id "Connector:TestPoint")
-		(at 107.95 44.45 270)
+		(lib_id "Device:Q_PMOS_GSD")
+		(at 53.34 162.56 0)
+		(mirror x)
 		(unit 1)
 		(exclude_from_sim no)
-		(in_bom no)
+		(in_bom yes)
 		(on_board yes)
 		(dnp no)
-		(fields_autoplaced yes)
-		(uuid "511c0cc6-051c-4fec-9ebc-ec8149f94bed")
-		(property "Reference" "TP3"
-			(at 113.03 43.1799 90)
+		(uuid "5030ffdc-0720-4d21-8a50-7711564f24b2")
+		(property "Reference" "P30"
+			(at 49.276 159.258 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+			)
+		)
+		(property "Value" "RZM001P02T2L"
+			(at 59.69 161.2901 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -5785,17 +7018,8 @@
 				(hide yes)
 			)
 		)
-		(property "Value" "ROON"
-			(at 113.03 45.7199 90)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(justify left)
-			)
-		)
-		(property "Footprint" "cnhardware:TPTHRU"
-			(at 107.95 49.53 0)
+		(property "Footprint" "cnhardware:SOT-723-COMPACTP"
+			(at 58.42 165.1 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -5804,7 +7028,7 @@
 			)
 		)
 		(property "Datasheet" "~"
-			(at 107.95 49.53 0)
+			(at 53.34 162.56 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -5812,8 +7036,8 @@
 				(hide yes)
 			)
 		)
-		(property "Description" "test point"
-			(at 107.95 44.45 0)
+		(property "Description" "P-MOSFET transistor, gate/source/drain"
+			(at 53.34 162.56 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -5821,8 +7045,8 @@
 				(hide yes)
 			)
 		)
-		(property "LCSC" "C25503131"
-			(at 107.95 44.45 90)
+		(property "LCSC" "C308762"
+			(at 53.34 162.56 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -5830,8 +7054,8 @@
 				(hide yes)
 			)
 		)
-		(property "Sim.Device" "TP"
-			(at 107.95 44.45 0)
+		(property "Sim.Device" "PMOS"
+			(at 53.34 162.56 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -5839,8 +7063,126 @@
 				(hide yes)
 			)
 		)
-		(property "Sim.Params" "TP"
-			(at 107.95 44.45 0)
+		(property "Sim.Type" "VDMOS"
+			(at 53.34 162.56 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Sim.Pins" "1=G 2=S 3=D"
+			(at 53.34 162.56 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(pin "3"
+			(uuid "19be04ed-a027-40e3-a112-cf3814165de6")
+		)
+		(pin "1"
+			(uuid "910797ec-aac5-476c-bb10-93236ee3688d")
+		)
+		(pin "2"
+			(uuid "7ba9e64b-d86a-44c3-9490-3ef04c0d3468")
+		)
+		(instances
+			(project "kicad"
+				(path "/d386f80f-1709-42ec-8243-5d17ab4d0026"
+					(reference "P30")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
+		(lib_id "Device:Q_NMOS_GSD")
+		(at 45.72 177.8 0)
+		(unit 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(dnp no)
+		(uuid "50b4a80d-e523-432e-ba02-4ade9da964b7")
+		(property "Reference" "N31"
+			(at 42.672 174.244 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+			)
+		)
+		(property "Value" "2SK3541"
+			(at 52.07 179.0699 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+				(hide yes)
+			)
+		)
+		(property "Footprint" "cnhardware:SOT-723-COMPACT"
+			(at 50.8 175.26 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Datasheet" "~"
+			(at 45.72 177.8 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Description" "N-MOSFET transistor, gate/source/drain"
+			(at 45.72 177.8 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "LCSC" "C42402303"
+			(at 45.72 177.8 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Sim.Device" "NMOS"
+			(at 45.72 177.8 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Sim.Type" "VDMOS"
+			(at 45.72 177.8 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Sim.Pins" "1=G 2=S 3=D"
+			(at 45.72 177.8 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -5849,12 +7191,128 @@
 			)
 		)
 		(pin "1"
-			(uuid "b48c01d2-8027-4693-81e7-75dd4984005d")
+			(uuid "d8545af9-d0f7-40ee-a4e3-00a07d915e29")
+		)
+		(pin "2"
+			(uuid "94c3a7b6-683e-45af-a11d-85165140700b")
+		)
+		(pin "3"
+			(uuid "bc63dbfd-a97e-4590-a910-bca6e3b25c9b")
 		)
 		(instances
 			(project "kicad"
 				(path "/d386f80f-1709-42ec-8243-5d17ab4d0026"
-					(reference "TP3")
+					(reference "N31")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
+		(lib_id "Device:Q_PMOS_GSD")
+		(at 52.07 110.49 0)
+		(mirror x)
+		(unit 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(dnp no)
+		(uuid "535e460a-0f5a-4a42-87d9-d238f4938731")
+		(property "Reference" "P27"
+			(at 48.006 107.188 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+			)
+		)
+		(property "Value" "RZM001P02T2L"
+			(at 58.42 109.2201 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+				(hide yes)
+			)
+		)
+		(property "Footprint" "cnhardware:SOT-723-COMPACTP"
+			(at 57.15 113.03 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Datasheet" "~"
+			(at 52.07 110.49 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Description" "P-MOSFET transistor, gate/source/drain"
+			(at 52.07 110.49 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "LCSC" "C308762"
+			(at 52.07 110.49 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Sim.Device" "PMOS"
+			(at 52.07 110.49 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Sim.Type" "VDMOS"
+			(at 52.07 110.49 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Sim.Pins" "1=G 2=S 3=D"
+			(at 52.07 110.49 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(pin "3"
+			(uuid "7c47f15f-437e-43c1-8930-12e2ad994d12")
+		)
+		(pin "1"
+			(uuid "d67b2a83-276a-493a-8efa-da4658ee2108")
+		)
+		(pin "2"
+			(uuid "1e3cae7e-714b-470d-aedf-e0ac2718c390")
+		)
+		(instances
+			(project "kicad"
+				(path "/d386f80f-1709-42ec-8243-5d17ab4d0026"
+					(reference "P27")
 					(unit 1)
 				)
 			)
@@ -6388,6 +7846,101 @@
 		)
 	)
 	(symbol
+		(lib_id "Connector:TestPoint")
+		(at 163.83 119.38 270)
+		(unit 1)
+		(exclude_from_sim no)
+		(in_bom no)
+		(on_board yes)
+		(dnp no)
+		(fields_autoplaced yes)
+		(uuid "5e2496bf-581a-42a9-a11a-04368b0f283f")
+		(property "Reference" "TP4"
+			(at 168.91 118.1099 90)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+				(hide yes)
+			)
+		)
+		(property "Value" "nXOR"
+			(at 168.91 120.6499 90)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+			)
+		)
+		(property "Footprint" "cnhardware:TPTHRU"
+			(at 163.83 124.46 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Datasheet" "~"
+			(at 163.83 124.46 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Description" "test point"
+			(at 163.83 119.38 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "LCSC" "C25503131"
+			(at 163.83 119.38 90)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Sim.Device" "TP"
+			(at 163.83 119.38 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Sim.Params" "TP"
+			(at 163.83 119.38 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(pin "1"
+			(uuid "ec30078c-0bab-4b25-93c1-ed7a0eab2ada")
+		)
+		(instances
+			(project "kicad"
+				(path "/d386f80f-1709-42ec-8243-5d17ab4d0026"
+					(reference "TP4")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
 		(lib_id "Device:Q_NMOS_GSD")
 		(at 245.11 130.81 0)
 		(unit 1)
@@ -6665,6 +8218,182 @@
 			(project "kicad"
 				(path "/d386f80f-1709-42ec-8243-5d17ab4d0026"
 					(reference "#PWR017")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
+		(lib_id "Device:Q_PMOS_GSD")
+		(at 64.77 110.49 0)
+		(mirror x)
+		(unit 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(dnp no)
+		(uuid "673f9783-fbe5-4b67-bcc3-832ab01f1588")
+		(property "Reference" "P28"
+			(at 60.706 107.188 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+			)
+		)
+		(property "Value" "RZM001P02T2L"
+			(at 71.12 109.2201 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+				(hide yes)
+			)
+		)
+		(property "Footprint" "cnhardware:SOT-723-COMPACTP"
+			(at 69.85 113.03 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Datasheet" "~"
+			(at 64.77 110.49 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Description" "P-MOSFET transistor, gate/source/drain"
+			(at 64.77 110.49 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "LCSC" "C308762"
+			(at 64.77 110.49 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Sim.Device" "PMOS"
+			(at 64.77 110.49 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Sim.Type" "VDMOS"
+			(at 64.77 110.49 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Sim.Pins" "1=G 2=S 3=D"
+			(at 64.77 110.49 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(pin "3"
+			(uuid "51ebd5a9-7e57-495c-8a01-6f5cda8ea5dd")
+		)
+		(pin "1"
+			(uuid "2d9d935a-0bbe-4aaf-90bf-11f70b7d1514")
+		)
+		(pin "2"
+			(uuid "64863b06-8a30-4f72-8521-14558ac0b64c")
+		)
+		(instances
+			(project "kicad"
+				(path "/d386f80f-1709-42ec-8243-5d17ab4d0026"
+					(reference "P28")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
+		(lib_id "power:VDD")
+		(at 134.62 86.36 0)
+		(unit 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(dnp no)
+		(uuid "67b720e3-de1b-433f-92a6-747123f1b4b5")
+		(property "Reference" "#PWR046"
+			(at 134.62 90.17 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Value" "VDD"
+			(at 139.192 85.09 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify right)
+			)
+		)
+		(property "Footprint" ""
+			(at 134.62 86.36 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Datasheet" ""
+			(at 134.62 86.36 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Description" "Power symbol creates a global label with name \"VDD\""
+			(at 134.62 86.36 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(pin "1"
+			(uuid "dde3dedb-b301-4945-bcdb-1149d3862de0")
+		)
+		(instances
+			(project "kicad"
+				(path "/d386f80f-1709-42ec-8243-5d17ab4d0026"
+					(reference "#PWR046")
 					(unit 1)
 				)
 			)
@@ -7022,82 +8751,6 @@
 		)
 	)
 	(symbol
-		(lib_id "Device:R")
-		(at 267.97 107.95 90)
-		(unit 1)
-		(exclude_from_sim no)
-		(in_bom yes)
-		(on_board yes)
-		(dnp no)
-		(uuid "6c05b607-0198-49ab-86ed-82a9ea2c1cfa")
-		(property "Reference" "R10"
-			(at 267.97 105.664 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-		(property "Value" "1"
-			(at 267.716 107.95 90)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-		(property "Footprint" "cnhardware:R_0402_1005Metric_COMPACT"
-			(at 267.97 109.728 90)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "Datasheet" "~"
-			(at 267.97 107.95 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "Description" "Resistor"
-			(at 267.97 107.95 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "LCSC" "C11702"
-			(at 267.97 107.95 90)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(pin "2"
-			(uuid "bb9e71df-fada-4793-987b-8f6071dc38fd")
-		)
-		(pin "1"
-			(uuid "122aaa20-d711-4506-ac6a-7c0ad566d980")
-		)
-		(instances
-			(project "kicad"
-				(path "/d386f80f-1709-42ec-8243-5d17ab4d0026"
-					(reference "R10")
-					(unit 1)
-				)
-			)
-		)
-	)
-	(symbol
 		(lib_id "Device:Q_NMOS_GSD")
 		(at 72.39 35.56 0)
 		(unit 1)
@@ -7364,6 +9017,72 @@
 			(project "kicad"
 				(path "/d386f80f-1709-42ec-8243-5d17ab4d0026"
 					(reference "LED1")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
+		(lib_id "power:VDD")
+		(at 54.61 100.33 0)
+		(unit 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(dnp no)
+		(uuid "71255b58-52c5-4a91-94b0-94187da8e32b")
+		(property "Reference" "#PWR044"
+			(at 54.61 104.14 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Value" "VDD"
+			(at 59.182 99.06 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify right)
+			)
+		)
+		(property "Footprint" ""
+			(at 54.61 100.33 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Datasheet" ""
+			(at 54.61 100.33 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Description" "Power symbol creates a global label with name \"VDD\""
+			(at 54.61 100.33 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(pin "1"
+			(uuid "19817355-a6c8-4cee-a347-f6da174e1314")
+		)
+		(instances
+			(project "kicad"
+				(path "/d386f80f-1709-42ec-8243-5d17ab4d0026"
+					(reference "#PWR044")
 					(unit 1)
 				)
 			)
@@ -7896,6 +9615,72 @@
 		)
 	)
 	(symbol
+		(lib_id "power:VDD")
+		(at 55.88 147.32 0)
+		(unit 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(dnp no)
+		(uuid "7ee926c7-84f2-4c74-8127-3b5c5965ac78")
+		(property "Reference" "#PWR048"
+			(at 55.88 151.13 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Value" "VDD"
+			(at 60.452 146.05 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify right)
+			)
+		)
+		(property "Footprint" ""
+			(at 55.88 147.32 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Datasheet" ""
+			(at 55.88 147.32 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Description" "Power symbol creates a global label with name \"VDD\""
+			(at 55.88 147.32 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(pin "1"
+			(uuid "d825cf30-8676-4f73-994a-5574d323397a")
+		)
+		(instances
+			(project "kicad"
+				(path "/d386f80f-1709-42ec-8243-5d17ab4d0026"
+					(reference "#PWR048")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
 		(lib_id "Device:Q_NMOS_GSD")
 		(at 236.22 38.1 0)
 		(unit 1)
@@ -8290,6 +10075,136 @@
 		)
 	)
 	(symbol
+		(lib_id "power:GND")
+		(at 134.62 106.68 0)
+		(unit 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(dnp no)
+		(uuid "8b0c6347-763b-45f4-8c7a-08e3efb97e31")
+		(property "Reference" "#PWR047"
+			(at 134.62 113.03 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Value" "GND"
+			(at 137.16 106.426 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Footprint" ""
+			(at 134.62 106.68 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Datasheet" ""
+			(at 134.62 106.68 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Description" "Power symbol creates a global label with name \"GND\" , ground"
+			(at 134.62 106.68 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(pin "1"
+			(uuid "815e74e5-8bc7-48f9-87c5-fd7eb299f7af")
+		)
+		(instances
+			(project "kicad"
+				(path "/d386f80f-1709-42ec-8243-5d17ab4d0026"
+					(reference "#PWR047")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
+		(lib_id "power:GND")
+		(at 48.26 182.88 0)
+		(unit 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(dnp no)
+		(uuid "8c258fc1-eed4-404b-b252-62a8dce2d1ec")
+		(property "Reference" "#PWR050"
+			(at 48.26 189.23 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Value" "GND"
+			(at 50.8 182.626 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Footprint" ""
+			(at 48.26 182.88 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Datasheet" ""
+			(at 48.26 182.88 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Description" "Power symbol creates a global label with name \"GND\" , ground"
+			(at 48.26 182.88 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(pin "1"
+			(uuid "554bb5bf-488a-428c-b3bb-60bc4b675b9b")
+		)
+		(instances
+			(project "kicad"
+				(path "/d386f80f-1709-42ec-8243-5d17ab4d0026"
+					(reference "#PWR050")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
 		(lib_id "Device:Q_NMOS_GSD")
 		(at 172.72 46.99 0)
 		(unit 1)
@@ -8494,6 +10409,101 @@
 		)
 	)
 	(symbol
+		(lib_id "Connector:TestPoint")
+		(at 143.51 101.6 90)
+		(unit 1)
+		(exclude_from_sim no)
+		(in_bom no)
+		(on_board yes)
+		(dnp no)
+		(fields_autoplaced yes)
+		(uuid "9a270ac9-6361-4e23-b9dd-84fd3c53c63e")
+		(property "Reference" "TP6"
+			(at 138.43 102.8701 90)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+				(hide yes)
+			)
+		)
+		(property "Value" "TP"
+			(at 140.208 99.06 90)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Footprint" "cnhardware:TPTHRU"
+			(at 143.51 96.52 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Datasheet" "~"
+			(at 143.51 96.52 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Description" "test point"
+			(at 143.51 101.6 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "LCSC" "C25503131"
+			(at 143.51 101.6 90)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Sim.Device" "TP"
+			(at 143.51 101.6 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Sim.Params" "ROON"
+			(at 143.51 101.6 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(pin "1"
+			(uuid "2ae9570a-debe-4523-88fd-ed752cc8a3f9")
+		)
+		(instances
+			(project "kicad"
+				(path "/d386f80f-1709-42ec-8243-5d17ab4d0026"
+					(reference "TP6")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
 		(lib_id "Device:Q_NMOS_GSD")
 		(at 49.53 35.56 0)
 		(unit 1)
@@ -8662,6 +10672,102 @@
 			(project "kicad"
 				(path "/d386f80f-1709-42ec-8243-5d17ab4d0026"
 					(reference "#PWR08")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
+		(lib_id "Connector:TestPoint")
+		(at 52.07 172.72 0)
+		(unit 1)
+		(exclude_from_sim no)
+		(in_bom no)
+		(on_board yes)
+		(dnp no)
+		(fields_autoplaced yes)
+		(uuid "9ffb281c-b800-4378-a3a5-30bd6e1da1d4")
+		(property "Reference" "TP7"
+			(at 50.7999 167.64 90)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+				(hide yes)
+			)
+		)
+		(property "Value" "TP"
+			(at 49.53 169.4181 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify right)
+				(hide yes)
+			)
+		)
+		(property "Footprint" "cnhardware:TPTHRU"
+			(at 57.15 172.72 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Datasheet" "~"
+			(at 57.15 172.72 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Description" "test point"
+			(at 52.07 172.72 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "LCSC" "C25503131"
+			(at 52.07 172.72 90)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Sim.Device" "TP"
+			(at 52.07 172.72 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Sim.Params" "ROON"
+			(at 52.07 172.72 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(pin "1"
+			(uuid "f3791f33-aeae-43ba-9682-1391603a1345")
+		)
+		(instances
+			(project "kicad"
+				(path "/d386f80f-1709-42ec-8243-5d17ab4d0026"
+					(reference "TP7")
 					(unit 1)
 				)
 			)
@@ -9478,82 +11584,6 @@
 		)
 	)
 	(symbol
-		(lib_id "Device:R")
-		(at 134.62 78.74 90)
-		(unit 1)
-		(exclude_from_sim no)
-		(in_bom yes)
-		(on_board yes)
-		(dnp no)
-		(uuid "b6353c5e-6407-4236-882a-4d6ffbf13b51")
-		(property "Reference" "R5"
-			(at 134.62 76.454 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-		(property "Value" "1"
-			(at 134.366 78.74 90)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-		(property "Footprint" "cnhardware:R_0402_1005Metric_COMPACT"
-			(at 134.62 80.518 90)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "Datasheet" "~"
-			(at 134.62 78.74 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "Description" "Resistor"
-			(at 134.62 78.74 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "LCSC" "C11702"
-			(at 134.62 78.74 90)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(pin "2"
-			(uuid "b583358a-14cf-4875-96db-10bbf69f2640")
-		)
-		(pin "1"
-			(uuid "3899a77e-065f-4ae9-839d-98ca7970edb1")
-		)
-		(instances
-			(project "kicad"
-				(path "/d386f80f-1709-42ec-8243-5d17ab4d0026"
-					(reference "R5")
-					(unit 1)
-				)
-			)
-		)
-	)
-	(symbol
 		(lib_id "Device:Q_PMOS_GSD")
 		(at 172.72 26.67 0)
 		(mirror x)
@@ -9768,82 +11798,6 @@
 			(project "kicad"
 				(path "/d386f80f-1709-42ec-8243-5d17ab4d0026"
 					(reference "P24")
-					(unit 1)
-				)
-			)
-		)
-	)
-	(symbol
-		(lib_id "Device:R")
-		(at 167.64 125.73 90)
-		(unit 1)
-		(exclude_from_sim no)
-		(in_bom yes)
-		(on_board yes)
-		(dnp no)
-		(uuid "bce589f9-d953-471a-b885-c3886af2cf5e")
-		(property "Reference" "R3"
-			(at 167.64 123.444 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-		(property "Value" "1"
-			(at 167.386 125.73 90)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-		(property "Footprint" "cnhardware:R_0402_1005Metric_COMPACT"
-			(at 167.64 127.508 90)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "Datasheet" "~"
-			(at 167.64 125.73 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "Description" "Resistor"
-			(at 167.64 125.73 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "LCSC" "C11702"
-			(at 167.64 125.73 90)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(pin "2"
-			(uuid "a083a7a5-597c-4803-91c0-8d2b70257e76")
-		)
-		(pin "1"
-			(uuid "e03e7991-6308-4989-a23b-a35fe9cf009e")
-		)
-		(instances
-			(project "kicad"
-				(path "/d386f80f-1709-42ec-8243-5d17ab4d0026"
-					(reference "R3")
 					(unit 1)
 				)
 			)
@@ -11784,82 +13738,6 @@
 		)
 	)
 	(symbol
-		(lib_id "Device:R")
-		(at 134.62 73.66 90)
-		(unit 1)
-		(exclude_from_sim no)
-		(in_bom yes)
-		(on_board yes)
-		(dnp no)
-		(uuid "e366a6ad-a115-45ba-aad8-ca55eb20b4f4")
-		(property "Reference" "R4"
-			(at 134.62 71.374 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-		(property "Value" "1"
-			(at 134.366 73.66 90)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-		(property "Footprint" "cnhardware:R_0402_1005Metric_COMPACT"
-			(at 134.62 75.438 90)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "Datasheet" "~"
-			(at 134.62 73.66 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "Description" "Resistor"
-			(at 134.62 73.66 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "LCSC" "C11702"
-			(at 134.62 73.66 90)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(pin "2"
-			(uuid "e943bd67-ea9f-4620-9298-c42fc36010b9")
-		)
-		(pin "1"
-			(uuid "3e8e20fc-96da-456e-bc51-2653a9350664")
-		)
-		(instances
-			(project "kicad"
-				(path "/d386f80f-1709-42ec-8243-5d17ab4d0026"
-					(reference "R4")
-					(unit 1)
-				)
-			)
-		)
-	)
-	(symbol
 		(lib_id "power:VDD")
 		(at 238.76 63.5 0)
 		(unit 1)
@@ -11991,6 +13869,224 @@
 		)
 	)
 	(symbol
+		(lib_id "Device:Q_NMOS_GSD")
+		(at 132.08 101.6 0)
+		(unit 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(dnp no)
+		(uuid "e5c083dc-1bf0-4b42-992c-a35c50c70699")
+		(property "Reference" "N29"
+			(at 129.032 98.044 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+			)
+		)
+		(property "Value" "2SK3541"
+			(at 138.43 102.8699 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+				(hide yes)
+			)
+		)
+		(property "Footprint" "cnhardware:SOT-723-COMPACT"
+			(at 137.16 99.06 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Datasheet" "~"
+			(at 132.08 101.6 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Description" "N-MOSFET transistor, gate/source/drain"
+			(at 132.08 101.6 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "LCSC" "C42402303"
+			(at 132.08 101.6 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Sim.Device" "NMOS"
+			(at 132.08 101.6 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Sim.Type" "VDMOS"
+			(at 132.08 101.6 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Sim.Pins" "1=G 2=S 3=D"
+			(at 132.08 101.6 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(pin "1"
+			(uuid "f05d0134-463e-4c1f-967a-6bc87179adf7")
+		)
+		(pin "2"
+			(uuid "4b1ca60b-eadc-4ca0-9049-761273f82d85")
+		)
+		(pin "3"
+			(uuid "6b80b95b-74f4-4872-9465-934ff34297e1")
+		)
+		(instances
+			(project "kicad"
+				(path "/d386f80f-1709-42ec-8243-5d17ab4d0026"
+					(reference "N29")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
+		(lib_id "Device:Q_NMOS_GSD")
+		(at 59.69 177.8 0)
+		(unit 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(dnp no)
+		(uuid "ecd61af7-9536-4572-bb34-374c7a8d8828")
+		(property "Reference" "N30"
+			(at 56.642 174.244 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+			)
+		)
+		(property "Value" "2SK3541"
+			(at 66.04 179.0699 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+				(hide yes)
+			)
+		)
+		(property "Footprint" "cnhardware:SOT-723-COMPACT"
+			(at 64.77 175.26 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Datasheet" "~"
+			(at 59.69 177.8 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Description" "N-MOSFET transistor, gate/source/drain"
+			(at 59.69 177.8 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "LCSC" "C42402303"
+			(at 59.69 177.8 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Sim.Device" "NMOS"
+			(at 59.69 177.8 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Sim.Type" "VDMOS"
+			(at 59.69 177.8 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Sim.Pins" "1=G 2=S 3=D"
+			(at 59.69 177.8 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(pin "1"
+			(uuid "10962c6b-bdcc-42f8-bb7e-7e6d5944618e")
+		)
+		(pin "2"
+			(uuid "2d49970f-63bb-4371-92b1-107701fb4d28")
+		)
+		(pin "3"
+			(uuid "0c2830e2-3ef9-409e-9555-9b753c83bcc0")
+		)
+		(instances
+			(project "kicad"
+				(path "/d386f80f-1709-42ec-8243-5d17ab4d0026"
+					(reference "N30")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
 		(lib_id "power:VDD")
 		(at 175.26 16.51 0)
 		(unit 1)
@@ -12057,32 +14153,36 @@
 		)
 	)
 	(symbol
-		(lib_id "Device:R")
-		(at 166.37 148.59 90)
+		(lib_id "Device:Q_PMOS_GSD")
+		(at 53.34 152.4 0)
+		(mirror x)
 		(unit 1)
 		(exclude_from_sim no)
 		(in_bom yes)
 		(on_board yes)
 		(dnp no)
-		(uuid "f354fefb-928c-4941-a11a-a4fbbc03fa64")
-		(property "Reference" "R2"
-			(at 166.37 146.304 0)
+		(uuid "f269a542-c975-4b25-a62b-cba6202c34c2")
+		(property "Reference" "P31"
+			(at 49.276 149.098 0)
 			(effects
 				(font
 					(size 1.27 1.27)
 				)
+				(justify left)
 			)
 		)
-		(property "Value" "1"
-			(at 166.116 148.59 90)
+		(property "Value" "RZM001P02T2L"
+			(at 59.69 151.1301 0)
 			(effects
 				(font
 					(size 1.27 1.27)
 				)
+				(justify left)
+				(hide yes)
 			)
 		)
-		(property "Footprint" "cnhardware:R_0402_1005Metric_COMPACT"
-			(at 166.37 150.368 90)
+		(property "Footprint" "cnhardware:SOT-723-COMPACTP"
+			(at 58.42 154.94 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -12091,7 +14191,7 @@
 			)
 		)
 		(property "Datasheet" "~"
-			(at 166.37 148.59 0)
+			(at 53.34 152.4 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -12099,8 +14199,8 @@
 				(hide yes)
 			)
 		)
-		(property "Description" "Resistor"
-			(at 166.37 148.59 0)
+		(property "Description" "P-MOSFET transistor, gate/source/drain"
+			(at 53.34 152.4 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -12108,8 +14208,8 @@
 				(hide yes)
 			)
 		)
-		(property "LCSC" "C11702"
-			(at 166.37 148.59 90)
+		(property "LCSC" "C308762"
+			(at 53.34 152.4 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -12117,16 +14217,46 @@
 				(hide yes)
 			)
 		)
-		(pin "2"
-			(uuid "739b13ee-c8ea-406b-b9f7-8a8848a5ccfa")
+		(property "Sim.Device" "PMOS"
+			(at 53.34 152.4 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Sim.Type" "VDMOS"
+			(at 53.34 152.4 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Sim.Pins" "1=G 2=S 3=D"
+			(at 53.34 152.4 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(pin "3"
+			(uuid "27f4f2d9-fa2f-4708-9a68-ea0933b8306f")
 		)
 		(pin "1"
-			(uuid "807e4f4c-143e-4f97-ad98-b1c0cafab853")
+			(uuid "f4c74844-d498-4084-97e3-8e1bd8f8c81c")
+		)
+		(pin "2"
+			(uuid "db382b2f-ec83-4372-92e6-7aec6c9858d3")
 		)
 		(instances
 			(project "kicad"
 				(path "/d386f80f-1709-42ec-8243-5d17ab4d0026"
-					(reference "R2")
+					(reference "P31")
 					(unit 1)
 				)
 			)

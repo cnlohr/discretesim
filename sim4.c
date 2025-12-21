@@ -132,7 +132,7 @@ void PFetCB( struct semicomp_nfet_t * s )
 	if( gc < 0.00001 )
 		fetR = 10.e6;
 	else
-		fetR = 15/gc;
+		fetR = 20/gc;
 
 	float vfDiode = (*s->vD - *s->vS - 1.6);
 	float rDiode = 10.e6;
@@ -419,15 +419,16 @@ int ProcessEngineeringNumber( const char * e, float * num )
 	return 0;
 }
 
-cir_reader cktfile = { 0 };
-ckt_sim sim;
-
 int main()
 {
 	int c;
 	int n;
 	int i;
 
+	cir_reader cktfile = { 0 };
+	ckt_sim sim = { 0 };
+	cnrbtree_strint  * testpoints = cnrbtree_strint_create();
+	FILE * fTestPoints = fopen( "testpoints.csv", "w" );
 	FILE * f = fopen( "kicad/kicad.cir", "r" );
 	if( !f )
 	{
@@ -452,10 +453,6 @@ int main()
 	}
 
 	printf( "Loaded %d nets\n", cktfile.numNets );
-	for( i = 0; i < cktfile.numNets; i++ )
-	{
-		printf( "\t%s\n", cktfile.netNames[i] );
-	}
 	printf( "Loaded %d components\n", cktfile.numComponents );
 
 	int numNodes = sim.numNodes = cktfile.numNets;
@@ -481,7 +478,7 @@ int main()
 		char * par0 = m->pars[0];
 		char * par1 = m->pars[1];
 		char * cid = cktfile.components[i].id;
-		printf( "\t%s; %s; %s\n", cid, c->type, par1 );
+		//printf( "\t%s; %s; %s\n", cid, c->type, par1 );
 		if( cid[0] == 'R' )
 		{
 			// A raw resistor.
@@ -497,7 +494,7 @@ int main()
 			compterms[0] = c->nets[0];
 			compterms[1] = c->nets[1];
 
-			printf( "\t\tAdded R %f\n", sim.compRes[rnum] );
+			//printf( "\t\tAdded R %f\n", sim.compRes[rnum] );
 		}
 		else if( par1 && strcmp( par0, "VDMOS" ) == 0 )
 		{
@@ -509,7 +506,8 @@ int main()
 		}
 		else if( strncmp( cid, "TP", 2 ) == 0 )
 		{
-			printf( "\t\tTODO: Adding TP\n" );
+			//printf( "TP: ID:%s TYPE:%s %d\n", c->id, c->type, c->nets[0] );
+			RBA( testpoints, cktfile.netNames[c->nets[0]] ) = c->nets[0];
 		}
 		else
 		{
@@ -557,6 +555,16 @@ int main()
 	int vddNode = RBA( cktfile.netmap, "VDD" );
 	int gndNode = RBA( cktfile.netmap, "GND" );
 
+	int numTestPoints = 0;
+	fprintf( fTestPoints, "Time (ns),");
+	RBFOREACH( strint, testpoints, i )
+	{
+		if( numTestPoints != 0 ) fprintf( fTestPoints,"," );
+		fprintf( fTestPoints, "%s", i->key );
+		numTestPoints++;
+	}
+	fprintf( fTestPoints, "\n" );
+
 	int iteration;
 	for( iteration = 0; iteration < 60000; iteration++ )
 	{
@@ -587,24 +595,23 @@ int main()
 			if( cv > 0 )
 				cdiff -= deltaI / cv * tdelta;
 			sim.compVDiff[c] = cdiff;
-
-		//	printf( "%d(%d,%d):%f,%f,%f[cv %f rv %f],+\n", c, n0, n1, deltaI*1000000, cdiff, vDiff*1000000, cv*1000000, rv);
 		}
 		
 		for( n = 0; n < sim.numNodes; n++ )
 		{
 			float nv;
-			//printf( "++ %f %f %f %f\n", sim.nodeVoltages[n], sim.nodeCurrents[n], sim.nodeCaps[n], tdelta );
 			sim.nodeVoltages[n] = nv = sim.nodeVoltages[n] + sim.nodeCurrents[n] / (sim.nodeCaps[n]) * tdelta;
-			//	printf( "[%s:%d:%f,%f]%c", cktfile.netNames[n], n, nv, sim.nodeCurrents[n]*1000000, (n == sim.numNodes-1) ? '\n':',' );
-			if( iteration == 0 )
+		}
+
+		if( ( iteration % 10 ) == 0 )
+		{
+			// Only output every 10 steps
+			int n = 0;
+			fprintf( fTestPoints, "%f,", iteration*tdelta*1000000000 );
+			RBFOREACH( strint, testpoints, i )
 			{
-				printf( "%s%c", cktfile.netNames[n], (n == sim.numNodes-1) ? '\n':',' );
-			}
-			else
-			{
-				if( (iteration % 10) == 0)
-					printf( "%f%c", nv, (n == sim.numNodes-1) ? '\n':',' );
+				fprintf( fTestPoints, "%f%c", sim.nodeVoltages[i->data], (n == numTestPoints-1) ? '\n' : ',' );
+				n++;
 			}
 		}
 

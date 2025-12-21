@@ -58,8 +58,8 @@ void * AddSuperComp( ckt_sim * sim, int size )
 	int nscp1 = nsc+1;
 	sim->numSuperComps = nscp1;
 	sim->superComps = realloc( sim->superComps, sizeof( struct supercomp_t * ) * nscp1 );
-	sim->superComps[nsc] = calloc( size, 1 );
-	struct semicomp_nfet_t * sc = (struct semicomp_nfet_t *)sim->superComps[nsc];
+	void * ret = sim->superComps[nsc] = calloc( size, 1 );
+	return ret;
 }
 
 //////////////////////////////////////////////////////////////////////
@@ -167,7 +167,6 @@ int AddFET( ckt_sim * sim, component * c, const char * type )
 	}
 
 	struct semicomp_nfet_t * sc = AddSuperComp( sim, sizeof( struct semicomp_nfet_t ) );
-
 	int mcompGS = sc->mcompGS = AddMetaComp( sim );
 	int mcompSD = sc->mcompSD = AddMetaComp( sim );
 	int mcompSDR = sc->mcompSDR = AddMetaComp( sim );
@@ -566,7 +565,7 @@ int main()
 	fprintf( fTestPoints, "\n" );
 
 	int iteration;
-	for( iteration = 0; iteration < 60000; iteration++ )
+	for( iteration = 0; iteration < 20000; iteration++ )
 	{
 		sim.nodeVoltages[gndNode] = 0;
 		sim.nodeVoltages[vddNode] = 3.3;
@@ -603,7 +602,7 @@ int main()
 			sim.nodeVoltages[n] = nv = sim.nodeVoltages[n] + sim.nodeCurrents[n] / (sim.nodeCaps[n]) * tdelta;
 		}
 
-		if( ( iteration % 10 ) == 0 )
+		if( ( iteration % 100 ) == 0 )
 		{
 			// Only output every 10 steps
 			int n = 0;

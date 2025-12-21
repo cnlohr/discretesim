@@ -1,3 +1,6 @@
+// TODO: Make it so node names are sorted, somehow.
+// TODO: Only show probed outputs.
+
 #include <stdio.h>
 #include <math.h>
 #include <stdlib.h>
@@ -73,6 +76,8 @@ struct semicomp_nfet_t
 	float * termR;
 	float gateCur;
 
+	float gateTau;
+
 	int mcompGS, mcompSD, mcompSDR, mcompDG;
 
 	ckt_sim * sim;
@@ -80,9 +85,12 @@ struct semicomp_nfet_t
 
 void NFetCB( struct semicomp_nfet_t * s )
 {
+	const float vgsTh = 1.1;
+
 	float vGS = *s->vG - *s->vS;
-	float dGSQ = (vGS - 1.1);
-	float gc = s->gateCur * .999 + dGSQ * .001;
+	float dGSQ = (vGS - vgsTh);
+
+	float gc = s->gateCur * (1-s->gateTau) + dGSQ * s->gateTau;
 	if( gc < -1 ) gc = -1;
 	if( gc > 5  ) gc = 5;
 	s->gateCur = gc;
@@ -107,9 +115,15 @@ void NFetCB( struct semicomp_nfet_t * s )
 
 void PFetCB( struct semicomp_nfet_t * s )
 {
+	const float vgsTh = 1.2;
+
 	float vSG = *s->vS - *s->vG;
-	float dGSQ = (vSG - 1.2);
-	float gc = s->gateCur * .9 + dGSQ * .1;
+	float dGSQ = (vSG - vgsTh);
+
+	// This is a little strange - we are chating here, and simulating
+	// a RC falloff here.
+	float gc = s->gateCur * (1.-s->gateTau) + dGSQ * s->gateTau;
+
 	if( gc < -1 ) gc = -1;
 	if( gc > 5  ) gc = 5;
 	s->gateCur = gc;
@@ -133,6 +147,19 @@ void PFetCB( struct semicomp_nfet_t * s )
 
 int AddFET( ckt_sim * sim, component * c, const char * type )
 {
+	// FETs are a combination of several components:
+	//        Crss
+	//   +----| |----------+     +----+
+	//   |                 |     |    |
+	//   |             |   |     |    /
+	//   |  RG         |---+--+--+    \
+	//  -+-/\/\--------|      = Coss  / SDR
+	//   |             |---+--+--+    \
+	//   |             |   |     |    |
+	//   |    Ciss         |     |----+
+	//   +----| |----------+     
+	//
+
 	if( c->numnets != 3 )
 	{
 		fprintf( stderr, "Error: FET has wrong number of nets\n" );
@@ -152,6 +179,11 @@ int AddFET( ckt_sim * sim, component * c, const char * type )
 	int * mcompDGterms = &sim->compTerms[mcompDG*2];
 
 	sc->gateCur  = Rand01() * 1.e-12; //in 0-1 pC
+
+	// This is a little strange - we are chating here, and simulating
+	// a RC falloff here.
+	// RG, and Ciss are our time constant calculations.
+	sc->gateTau = 1.0-exp(-tdelta/(20 * 15e-12));
 
 	// Nets are drain gate source
 	int nG = c->nets[1];
@@ -295,7 +327,6 @@ int ProcessEngineeringNumber( const char * e, float * num )
 	{
 		c = e[n];
 		int isnum = (c >= '0' && c <= '9' );
-		printf( "/%c(%d)/\n", c, c );
 		if( !c ) break;
 		n++;
 
@@ -383,7 +414,7 @@ int ProcessEngineeringNumber( const char * e, float * num )
 		fprintf( stderr, "Error: junk after end of engineering number %c\n", c );
 		return -6;
 	} while( 1 );
-printf( "FINAL: %f\n", ret );
+
 	*num = (float)ret;
 	return 0;
 }
@@ -450,7 +481,7 @@ int main()
 		char * par0 = m->pars[0];
 		char * par1 = m->pars[1];
 		char * cid = cktfile.components[i].id;
-		printf( "\t%s; %s; %s ", cid, c->type, par1 );
+		printf( "\t%s; %s; %s\n", cid, c->type, par1 );
 		if( cid[0] == 'R' )
 		{
 			// A raw resistor.
@@ -527,7 +558,7 @@ int main()
 	int gndNode = RBA( cktfile.netmap, "GND" );
 
 	int iteration;
-	for( iteration = 0; iteration < 20000; iteration++ )
+	for( iteration = 0; iteration < 60000; iteration++ )
 	{
 		sim.nodeVoltages[gndNode] = 0;
 		sim.nodeVoltages[vddNode] = 3.3;

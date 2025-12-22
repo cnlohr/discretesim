@@ -1460,6 +1460,12 @@
 		(uuid "29d3807e-36f4-4410-8770-348f684862ab")
 	)
 	(junction
+		(at 71.12 135.89)
+		(diameter 0)
+		(color 0 0 0 0)
+		(uuid "2c79fed7-76ae-4b3e-9f5c-6589023843ae")
+	)
+	(junction
 		(at 154.94 180.34)
 		(diameter 0)
 		(color 0 0 0 0)
@@ -2332,6 +2338,16 @@
 			(type default)
 		)
 		(uuid "7d6741fa-ac56-4a3d-9253-69d6a314db45")
+	)
+	(wire
+		(pts
+			(xy 71.12 127) (xy 71.12 135.89)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "7e65b162-7402-4013-92cd-9e095b276535")
 	)
 	(wire
 		(pts
@@ -5810,6 +5826,76 @@
 		)
 	)
 	(symbol
+		(lib_id "Device:C_Small")
+		(at 60.96 124.46 0)
+		(unit 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(dnp no)
+		(fields_autoplaced yes)
+		(uuid "2c59bbbd-f899-4ff3-b050-2ecff166c800")
+		(property "Reference" "C4"
+			(at 63.5 123.1962 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+			)
+		)
+		(property "Value" "500p"
+			(at 63.5 125.7362 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+			)
+		)
+		(property "Footprint" ""
+			(at 60.96 124.46 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Datasheet" "~"
+			(at 60.96 124.46 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Description" "Unpolarized capacitor, small symbol"
+			(at 60.96 124.46 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(pin "2"
+			(uuid "c5dcb9b5-6467-408a-84fa-8a7ba2fbb44e")
+		)
+		(pin "1"
+			(uuid "7d40e085-048e-4112-810c-568a17990496")
+		)
+		(instances
+			(project "testcircuit"
+				(path "/d386f80f-1709-42ec-8243-5d17ab4d0026"
+					(reference "C4")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
 		(lib_id "Device:Q_PMOS_GSD")
 		(at 66.04 135.89 0)
 		(mirror x)
@@ -8726,6 +8812,71 @@
 			(project "testcircuit"
 				(path "/d386f80f-1709-42ec-8243-5d17ab4d0026"
 					(reference "#PWR05")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
+		(lib_id "power:GND")
+		(at 60.96 121.92 180)
+		(unit 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(dnp no)
+		(uuid "6cd82142-c46d-454c-a127-c99189587336")
+		(property "Reference" "#PWR057"
+			(at 60.96 115.57 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Value" "GND"
+			(at 58.42 122.174 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Footprint" ""
+			(at 60.96 121.92 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Datasheet" ""
+			(at 60.96 121.92 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Description" "Power symbol creates a global label with name \"GND\" , ground"
+			(at 60.96 121.92 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(pin "1"
+			(uuid "81f76180-ed76-4e87-a89a-e93f04b1988f")
+		)
+		(instances
+			(project "testcircuit"
+				(path "/d386f80f-1709-42ec-8243-5d17ab4d0026"
+					(reference "#PWR057")
 					(unit 1)
 				)
 			)
@@ -13032,6 +13183,71 @@
 		)
 	)
 	(symbol
+		(lib_id "power:GND")
+		(at 71.12 121.92 180)
+		(unit 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(dnp no)
+		(uuid "c664c386-354c-4955-9077-a302da32f47e")
+		(property "Reference" "#PWR058"
+			(at 71.12 115.57 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Value" "GND"
+			(at 68.58 122.174 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Footprint" ""
+			(at 71.12 121.92 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Datasheet" ""
+			(at 71.12 121.92 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Description" "Power symbol creates a global label with name \"GND\" , ground"
+			(at 71.12 121.92 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(pin "1"
+			(uuid "d0964f48-5e7a-40d2-a70b-f11e5a4935d8")
+		)
+		(instances
+			(project "testcircuit"
+				(path "/d386f80f-1709-42ec-8243-5d17ab4d0026"
+					(reference "#PWR058")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
 		(lib_id "Device:Q_NMOS_GSD")
 		(at 76.2 146.05 0)
 		(unit 1)
@@ -13268,7 +13484,7 @@
 				(justify left)
 			)
 		)
-		(property "Value" "1uH"
+		(property "Value" "200nH"
 			(at 175.26 126.9999 0)
 			(effects
 				(font
@@ -14426,6 +14642,76 @@
 			(project "testcircuit"
 				(path "/d386f80f-1709-42ec-8243-5d17ab4d0026"
 					(reference "N11")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
+		(lib_id "Device:C_Small")
+		(at 71.12 124.46 0)
+		(unit 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(dnp no)
+		(fields_autoplaced yes)
+		(uuid "e2d9348f-b8b7-4d30-9fb9-9cec86278c44")
+		(property "Reference" "C5"
+			(at 73.66 123.1962 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+			)
+		)
+		(property "Value" "500p"
+			(at 73.66 125.7362 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+			)
+		)
+		(property "Footprint" ""
+			(at 71.12 124.46 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Datasheet" "~"
+			(at 71.12 124.46 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Description" "Unpolarized capacitor, small symbol"
+			(at 71.12 124.46 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(pin "2"
+			(uuid "57634020-b430-46d4-819f-94a277e09de2")
+		)
+		(pin "1"
+			(uuid "a1139817-acd7-44c9-8341-0cfa7cac740a")
+		)
+		(instances
+			(project "testcircuit"
+				(path "/d386f80f-1709-42ec-8243-5d17ab4d0026"
+					(reference "C5")
 					(unit 1)
 				)
 			)

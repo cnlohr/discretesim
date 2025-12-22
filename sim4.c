@@ -1,3 +1,5 @@
+// TODO: Make inductor go into resistive mode.
+
 #include <stdio.h>
 #include <math.h>
 #include <stdlib.h>

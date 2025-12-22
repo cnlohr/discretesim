@@ -1,5 +1,4 @@
-// TODO: Make it so node names are sorted, somehow.
-// TODO: Only show probed outputs.
+// TODO: Add inductors.
 
 #include <stdio.h>
 #include <math.h>
@@ -208,7 +207,7 @@ int AddFET( ckt_sim * sim, component * c, const char * type )
 	sim->compCaps[mcompDG] = 3.e-12; // crss
 	sim->compRes[mcompDG] = 10;
 
-	sim->compCaps[mcompSD] = 10.e-12; // coss
+	sim->compCaps[mcompSD] = 10.e-12; // coss (Averaged across the range)
 	sim->compRes[mcompSD] = 1; //RG
 
 	sim->compCaps[mcompSDR] = -1; // Between drain and source
@@ -243,6 +242,8 @@ struct semicomp_led_t
 
 	float * vAnnode;
 	float * vCathode;
+	float vF;
+	float rInflex;
 
 	int compRindex;
 	float * termR;
@@ -256,34 +257,64 @@ struct semicomp_led_t
 void LEDCB( struct semicomp_led_t * s )
 {
 	float dF = *s->vAnnode - *s->vCathode;
-	float vF = 1.6;
+	float vF = s->vF;
 
 	dF -= vF;
 
 	float * r = s->termR;
 	if( !r ) r = s->termR = &s->sim->compRes[s->compRindex];
 
+	float rout = 0.0;
+
 	if( dF < 0.00001 )
-		*r = 10.e6;
+		rout = 10.e6;
 	else
-		*r = 10/dF;
+		rout = s->rInflex/dF;
+	if( rout < 1.0 ) rout = 1.0;
+	*r = rout;
 }
 
-int AddLED( ckt_sim * sim, component * c, const char * type )
+int AddDiode( ckt_sim * sim, component * c, const char * type, int is_led )
 {
 	struct semicomp_led_t * sc = AddSuperComp( sim, sizeof( struct semicomp_led_t ) );
 
 	sc->cb = LEDCB;
 
-	int nA = c->nets[1];
-	int nC = c->nets[0];
+	int nA, nC;
+	if( is_led )
+	{
+		nA = c->nets[1];
+		nC = c->nets[0];
+	}
+	else
+	{
+		nC = c->nets[1];
+		nA = c->nets[0];
+	}
 
 	int mcomp = sc->mcomp = AddMetaComp( sim );
+	int mcompCap = sc->mcomp = AddMetaComp( sim );
 
 	int * compterms = &sim->compTerms[mcomp*2];
-
 	compterms[0] = nA;
 	compterms[1] = nC;
+	int * comptermsCap = &sim->compTerms[mcompCap*2];
+	comptermsCap[0] = nA;
+	comptermsCap[1] = nC;
+
+	sim->compRes[mcompCap] = 1;
+	sim->compCaps[mcompCap] = 5.e-12;
+
+	if( is_led )
+	{
+		sc->vF = 1.6;
+		sc->rInflex = 20;
+	}
+	else
+	{
+		sc->vF = .5;
+		sc->rInflex = 0.5;
+	}
 
 	sc->vAnnode = &sim->nodeVoltages[nA];
 	sc->vCathode = &sim->nodeVoltages[nC];
@@ -330,7 +361,7 @@ int main( int argc, char ** argv )
 	cir_reader cktfile = { 0 };
 	ckt_sim sim = { 0 };
 	cnrbtree_strint  * testpoints = cnrbtree_strint_create();
-	FILE * fTestPoints = fopen( "testpoints.csv", "w" );
+	FILE * fTestPoints = fopen( "timeseries.csv", "w" );
 	FILE * f = fopen( cirFilename, "r" );
 	if( !f )
 	{
@@ -413,13 +444,17 @@ int main( int argc, char ** argv )
 			compterms[0] = c->nets[0];
 			compterms[1] = c->nets[1];
 		}
+		else if( cid[0] == 'D' )
+		{
+			if( AddDiode( &sim, c, par1, 0 ) ) return -6;
+		}
 		else if( par1 && strcmp( par0, "VDMOS" ) == 0 )
 		{
 			if( AddFET( &sim, c, par1 ) ) return -5;
 		}
 		else if( strncmp( cid, "LED", 3 ) == 0 )
 		{
-			if( AddLED( &sim, c, par1 ) ) return -6;
+			if( AddDiode( &sim, c, par1, 1 ) ) return -6;
 		}
 		else if( strncmp( cid, "TP", 2 ) == 0 )
 		{
@@ -483,7 +518,7 @@ int main( int argc, char ** argv )
 	fprintf( fTestPoints, "\n" );
 
 	int iteration;
-	for( iteration = 0; iteration < 60000; iteration++ )
+	for( iteration = 0; iteration < 100000; iteration++ )
 	{
 		sim.nodeVoltages[gndNode] = 0;
 		sim.nodeVoltages[vddNode] = 3.3;

@@ -48,5 +48,7 @@ typedef struct cir_reader_t
 
 int CircuitLoad( cir_reader * s, char * cir );
 
+int ProcessEngineeringNumber( const char * e, float * num );
+
 #endif
 

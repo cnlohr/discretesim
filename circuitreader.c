@@ -115,3 +115,107 @@ int CircuitLoad( cir_reader * s, char * cir )
 	return 0;
 }
 
+int ProcessEngineeringNumber( const char * e, float * num )
+{
+	int n = 0;
+	int started = 0;
+	int c;
+	int isNeg = 0;
+	double ret = 0.0;
+	double decimal_derate = 0.1;
+	int after_decimal = 0;
+	do
+	{
+		c = e[n];
+		int isnum = (c >= '0' && c <= '9' );
+		if( !c ) break;
+		n++;
+
+		if( c == '.' )
+		{
+			if( after_decimal )
+			{
+				fprintf( stderr, "Error: can't use two decimals in number %s\n", e );
+				return -5;
+			}
+			after_decimal = 1;
+			started = 1;
+			continue;
+		}
+		else if( !started && !isnum )
+		{
+			if( (c == ' ' || c == '\t' ) ) continue;
+			if( c == '-' ) { isNeg = 1; started = 1; continue; }
+			if( c == '+' ) { isNeg = 0; started = 1; continue; }
+			fprintf( stderr, "Error: can't parse engineering number \"%s\"\n", e );
+			return -1;
+		}
+
+		started = 1;
+
+		if( isnum )
+		{
+			if( after_decimal )
+			{
+				ret = ret + (c - '0') * decimal_derate;
+				decimal_derate/=10;
+			}
+			else
+			{
+				ret = ret * 10 + (c - '0');
+			}
+		}
+		else if( c == 'k' || c == 'K' )
+		{
+			ret *= 1000;
+			break;
+		}
+		else if( c == 'M' )
+		{
+			ret *= 1000000;
+			break;
+		}
+		else if( c == 'G' )
+		{
+			ret *= 1000000;
+			break;
+		}
+		else if( c == 'm' )
+		{
+			ret /= 1000;
+			break;
+		}
+		else if( c == 'u' )
+		{
+			ret /= 1000000;
+			break;
+		}
+		else if( c == 'n' )
+		{
+			ret /= 1000000000;
+			break;
+		}
+		else if( c == 'p' )
+		{
+			ret /= 1000000000000;
+			break;
+		}
+		else
+		{
+			fprintf( stderr, "Error: unknown parameter in engineering number %c\n", c );
+			return -5;
+		}
+	} while( 1 );
+	
+	do
+	{
+		c = e[n++];
+		if( !c ) break;
+		if( c == ' ' || c == '\t' ) continue;
+		fprintf( stderr, "Error: junk after end of engineering number %c\n", c );
+		return -6;
+	} while( 1 );
+
+	*num = (float)ret;
+	return 0;
+}

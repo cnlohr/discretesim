@@ -313,122 +313,25 @@ int AddMetaComp( ckt_sim * s )
 	return cid;
 }
 
-int ProcessEngineeringNumber( const char * e, float * num )
-{
-	int n = 0;
-	int started = 0;
-	int c;
-	int isNeg = 0;
-	double ret = 0.0;
-	double decimal_derate = 0.1;
-	int after_decimal = 0;
-	do
-	{
-		c = e[n];
-		int isnum = (c >= '0' && c <= '9' );
-		if( !c ) break;
-		n++;
-
-		if( c == '.' )
-		{
-			if( after_decimal )
-			{
-				fprintf( stderr, "Error: can't use two decimals in number %s\n", e );
-				return -5;
-			}
-			after_decimal = 1;
-			started = 1;
-			continue;
-		}
-		else if( !started && !isnum )
-		{
-			if( (c == ' ' || c == '\t' ) ) continue;
-			if( c == '-' ) { isNeg = 1; started = 1; continue; }
-			if( c == '+' ) { isNeg = 0; started = 1; continue; }
-			fprintf( stderr, "Error: can't parse engineering number \"%s\"\n", e );
-			return -1;
-		}
-
-		started = 1;
-
-		if( isnum )
-		{
-			if( after_decimal )
-			{
-				ret = ret + (c - '0') * decimal_derate;
-				decimal_derate/=10;
-			}
-			else
-			{
-				ret = ret * 10 + (c - '0');
-			}
-		}
-		else if( c == 'k' || c == 'K' )
-		{
-			ret *= 1000;
-			break;
-		}
-		else if( c == 'M' )
-		{
-			ret *= 1000000;
-			break;
-		}
-		else if( c == 'G' )
-		{
-			ret *= 1000000;
-			break;
-		}
-		else if( c == 'm' )
-		{
-			ret /= 1000;
-			break;
-		}
-		else if( c == 'u' )
-		{
-			ret /= 1000000;
-			break;
-		}
-		else if( c == 'n' )
-		{
-			ret /= 1000000000;
-			break;
-		}
-		else if( c == 'p' )
-		{
-			ret /= 1000000000000;
-			break;
-		}
-		else
-		{
-			fprintf( stderr, "Error: unknown parameter in engineering number %c\n", c );
-			return -5;
-		}
-	} while( 1 );
-	
-	do
-	{
-		c = e[n++];
-		if( !c ) break;
-		if( c == ' ' || c == '\t' ) continue;
-		fprintf( stderr, "Error: junk after end of engineering number %c\n", c );
-		return -6;
-	} while( 1 );
-
-	*num = (float)ret;
-	return 0;
-}
-
-int main()
+int main( int argc, char ** argv )
 {
 	int c;
 	int n;
 	int i;
 
+	if( argc != 2 )
+	{
+		fprintf( stderr, "Error: Invalid usage: [tool] [.cir file]\n" );
+		return -5;
+	}
+
+	const char * cirFilename = argv[1];
+
 	cir_reader cktfile = { 0 };
 	ckt_sim sim = { 0 };
 	cnrbtree_strint  * testpoints = cnrbtree_strint_create();
 	FILE * fTestPoints = fopen( "testpoints.csv", "w" );
-	FILE * f = fopen( "kicad/kicad.cir", "r" );
+	FILE * f = fopen( cirFilename, "r" );
 	if( !f )
 	{
 		fprintf( stderr, "Error: can't open file\n" );
@@ -477,6 +380,7 @@ int main()
 		char * par0 = m->pars[0];
 		char * par1 = m->pars[1];
 		char * cid = cktfile.components[i].id;
+		char * type = cktfile.components[i].type;
 		//printf( "\t%s; %s; %s\n", cid, c->type, par1 );
 		if( cid[0] == 'R' )
 		{
@@ -495,6 +399,20 @@ int main()
 
 			//printf( "\t\tAdded R %f\n", sim.compRes[rnum] );
 		}
+		else if( cid[0] == 'C' )
+		{
+			int cnum = AddMetaComp( &sim );
+			sim.compRes[cnum] = 0.1;
+			if( ProcessEngineeringNumber( c->type, &sim.compCaps[cnum] ) )
+			{
+				return -5;
+			}
+
+			int * compterms = &sim.compTerms[cnum*2];
+
+			compterms[0] = c->nets[0];
+			compterms[1] = c->nets[1];
+		}
 		else if( par1 && strcmp( par0, "VDMOS" ) == 0 )
 		{
 			if( AddFET( &sim, c, par1 ) ) return -5;
@@ -510,7 +428,7 @@ int main()
 		}
 		else
 		{
-			printf( "Unknown component\n" );
+			printf( "Unknown component CID:%s TYPE:%s PAR0:%s\n", cid, type, par0 );
 			numUnknown++;
 		}
 	}
@@ -565,7 +483,7 @@ int main()
 	fprintf( fTestPoints, "\n" );
 
 	int iteration;
-	for( iteration = 0; iteration < 20000; iteration++ )
+	for( iteration = 0; iteration < 60000; iteration++ )
 	{
 		sim.nodeVoltages[gndNode] = 0;
 		sim.nodeVoltages[vddNode] = 3.3;

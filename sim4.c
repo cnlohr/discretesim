@@ -1,5 +1,3 @@
-// TODO: Add inductors.
-
 #include <stdio.h>
 #include <math.h>
 #include <stdlib.h>
@@ -323,6 +321,73 @@ int AddDiode( ckt_sim * sim, component * c, const char * type, int is_led )
 	return 0;
 }
 
+
+
+
+
+
+struct semicomp_inductor_t
+{
+	void (*cb)( struct semicomp_inductor_t * s );
+
+/*
+	float * vAnnode;
+	float * vCathode;
+	float vF;
+	float rInflex;
+
+	int compRindex;
+	float * termR;
+*/
+	float h;
+	float q;
+	float isat;
+	int node1;
+	int node2;
+	ckt_sim * sim;
+};
+
+
+void InductorCB( struct semicomp_inductor_t * s )
+{
+	ckt_sim * sim = s->sim;
+	int n1 = s->node1;
+	int n2 = s->node2;
+	float nv1 = sim->nodeVoltages[n1];
+	float nv2 = sim->nodeVoltages[n2];
+
+	float dQ = ( nv1 - nv2 ) * tdelta / s->h;
+	float q = s->q + dQ;
+	float sisat = s->isat;
+	if( q > sisat ) q = sisat;
+	if( q <-sisat ) q =-sisat;
+	s->q = q;
+	sim->nodeCurrents[n1] -= q;
+	sim->nodeCurrents[n2] += q;
+}
+
+int AddInductor( ckt_sim * sim, component * c )
+{
+	struct semicomp_inductor_t * sc = AddSuperComp( sim, sizeof( struct semicomp_inductor_t ) );
+
+	sc->cb = InductorCB;
+	sc->node1 = c->nets[0];
+	sc->node2 = c->nets[1];
+	sc->isat = 1; // in amps.
+
+	if( ProcessEngineeringNumber( c->type, &sc->h ) )
+	{
+		fprintf( stderr, "Invalid number on component %s\n", c->id );
+		return -5;
+	}
+
+	sc->q = Rand01() * 1.e-12;
+
+	sc->sim = sim;
+	return 0;
+}
+
+
 ////////////////////////////////////////////////////////////////////////////////
 
 int AddMetaComp( ckt_sim * s )
@@ -444,6 +509,10 @@ int main( int argc, char ** argv )
 			compterms[0] = c->nets[0];
 			compterms[1] = c->nets[1];
 		}
+		else if( cid[0] == 'L' )
+		{
+			if( AddInductor( &sim, c ) ) return -8;
+		}
 		else if( cid[0] == 'D' )
 		{
 			if( AddDiode( &sim, c, par1, 0 ) ) return -6;
@@ -518,7 +587,7 @@ int main( int argc, char ** argv )
 	fprintf( fTestPoints, "\n" );
 
 	int iteration;
-	for( iteration = 0; iteration < 100000; iteration++ )
+	for( iteration = 0; iteration < 4000000; iteration++ )
 	{
 		sim.nodeVoltages[gndNode] = 0;
 		sim.nodeVoltages[vddNode] = 3.3;
@@ -526,6 +595,12 @@ int main( int argc, char ** argv )
 		for( n = 0; n < sim.numNodes; n++ )
 		{
 			sim.nodeCurrents[n] = 0;
+		}
+
+		for( c = 0; c < sim.numSuperComps; c++ )
+		{
+			struct supercomp_t * sc = sim.superComps[c];
+			sc->cb( sc );
 		}
 
 		for( c = 0; c < sim.numComps; c++ )
@@ -555,7 +630,7 @@ int main( int argc, char ** argv )
 			sim.nodeVoltages[n] = nv = sim.nodeVoltages[n] + sim.nodeCurrents[n] / (sim.nodeCaps[n]) * tdelta;
 		}
 
-		if( ( iteration % 100 ) == 0 )
+		if( ( iteration % 1000 ) == 0 )
 		{
 			// Only output every 10 steps
 			int n = 0;
@@ -565,12 +640,6 @@ int main( int argc, char ** argv )
 				fprintf( fTestPoints, "%f%c", sim.nodeVoltages[i->data], (n == numTestPoints-1) ? '\n' : ',' );
 				n++;
 			}
-		}
-
-		for( c = 0; c < sim.numSuperComps; c++ )
-		{
-			struct supercomp_t * sc = sim.superComps[c];
-			sc->cb( sc );
 		}
 	}
 

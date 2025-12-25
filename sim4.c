@@ -33,6 +33,7 @@ typedef struct
 	float * compCaps;
 	float * compRes;
 	float * compVDiff;
+	float * compVDiffResidue;
 	int * compTerms;
 
 	struct supercomp_t ** superComps;
@@ -400,11 +401,13 @@ int AddMetaComp( ckt_sim * s )
 	s->compCaps = realloc( s->compCaps, cp1 * sizeof( float ) );
 	s->compRes = realloc( s->compRes, cp1 * sizeof( float ) );
 	s->compVDiff = realloc( s->compVDiff, cp1 * sizeof( float ) );
+	s->compVDiffResidue = realloc( s->compVDiffResidue, cp1 * sizeof( float ) );
 	s->compTerms = realloc( s->compTerms, cp1 * 2 * sizeof( int ) );
 
 	s->compCaps[cid] = -1;
 	s->compRes[cid] = 1;
 	s->compVDiff[cid] = Rand01() * 1.e-6;
+	s->compVDiffResidue[cid] = Rand01() * 1.e-6;
 	s->compTerms[cid*2+0] = -1;
 	s->compTerms[cid*2+1] = -1;
 
@@ -612,6 +615,9 @@ int main( int argc, char ** argv )
 			float v0 = sim.nodeVoltages[n0];
 			float v1 = sim.nodeVoltages[n1];
 			float cdiff = sim.compVDiff[c];
+
+			// Optional: Capacitor Residue, to allow it
+			float cdiffresidue = sim.compVDiffResidue[c];
 			float vDiff = v1 - v0 + cdiff;
 
 			float cv = sim.compCaps[c];
@@ -620,10 +626,19 @@ int main( int argc, char ** argv )
 			float deltaI = vDiff / rv;
 			sim.nodeCurrents[n0] += deltaI/2;
 			sim.nodeCurrents[n1] -= deltaI/2;
-			
+
+			float cdiffout = cdiff;
+			float vdiff = deltaI / cv * tdelta;
 			if( cv > 0 )
-				cdiff -= deltaI / cv * tdelta;
-			sim.compVDiff[c] = cdiff;
+				cdiffout = cdiffout - vdiff;
+
+			// Optional: Simulate with residue on capacitors.
+			// This makes it so adjustments don't get lost but charge accumulates.
+			cdiffout -= cdiffresidue;
+			float deltaresidue = (cdiffout - cdiff) + vdiff;
+			sim.compVDiffResidue[c] = cdiffresidue + deltaresidue;
+
+			sim.compVDiff[c] = cdiffout;
 		}
 		
 		for( n = 0; n < sim.numNodes; n++ )

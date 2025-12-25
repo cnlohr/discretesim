@@ -1,0 +1,6 @@
+.title KiCad schematic
+TP2 VDD ROON
+R1 VDD RC 1k
+TP1 RC ROON
+C5 RC GND 10n
+.end
